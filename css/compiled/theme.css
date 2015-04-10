@@ -1301,33 +1301,55 @@ a:focus, button:focus {
   /* navigation dots */
   /* slides */
   /* video modal */ }
-  @media (max-width: 991px) {
-    #home2 #hero {
-      padding-top: 100px; } }
-  @media (max-width: 767px) {
-    #home2 #hero {
-      height: 550px; } }
+@media (max-width: 991px) {
+  #home2 #hero {
+    padding-top: 100px; 
+    } 
+  }
+@media (max-width: 767px) {
+  #home2 #hero {
+    height: 550px;
+    }
+  }
 
 /* Slide configuration for home2 init*/
-  #home2 #hero .slide-nav {
+#home2 #hero .slide-nav {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 140px;
+  z-index: 200;
+  text-indent: 100%;
+  overflow: hidden;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+  -webkit-transition: opacity 0.2s linear;
+  -moz-transition: opacity 0.2s linear;
+  -ms-transition: opacity 0.2s linear;
+  -o-transition: opacity 0.2s linear;
+  transition: opacity 0.2s linear; }
+  #home2 #hero .slide-nav:hover {
+    opacity: 1;
+    filter: alpha(opacity=100); }
+  #home2 #hero .slide-nav.prev:after {
+    content: "";
+    display: block;
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 140px;
-    z-index: 200;
-    text-indent: 100%;
-    overflow: hidden;
-    opacity: 0.5;
-    filter: alpha(opacity=50);
-    -webkit-transition: opacity 0.2s linear;
-    -moz-transition: opacity 0.2s linear;
-    -ms-transition: opacity 0.2s linear;
-    -o-transition: opacity 0.2s linear;
-    transition: opacity 0.2s linear; }
-    #home2 #hero .slide-nav:hover {
-      opacity: 1;
-      filter: alpha(opacity=100); }
-    #home2 #hero .slide-nav.prev:after {
+    margin: auto 0;
+    width: 19px;
+    height: 58px;
+    background: url("../../images/slide-arrow.png") no-repeat;
+    left: 30px;
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg); }
+  #home2 #hero .slide-nav.next {
+    right: 0; }
+    #home2 #hero .slide-nav.next:after {
       content: "";
       display: block;
       position: absolute;
@@ -1337,27 +1359,9 @@ a:focus, button:focus {
       width: 19px;
       height: 58px;
       background: url("../../images/slide-arrow.png") no-repeat;
-      left: 30px;
-      -moz-transform: rotate(180deg);
-      -o-transform: rotate(180deg);
-      -ms-transform: rotate(180deg);
-      -webkit-transform: rotate(180deg);
-      transform: rotate(180deg); }
-    #home2 #hero .slide-nav.next {
-      right: 0; }
-      #home2 #hero .slide-nav.next:after {
-        content: "";
-        display: block;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        margin: auto 0;
-        width: 19px;
-        height: 58px;
-        background: url("../../images/slide-arrow.png") no-repeat;
-        right: 30px; }
+      right: 30px; }
 /* End of slinde-nav */
-
+/* Nav points for Home 2 */
   #home2 #hero nav {
     z-index: 999;
     position: absolute;
@@ -1373,6 +1377,9 @@ a:focus, button:focus {
       margin: 0 3px; }
       #home2 #hero nav a.active {
         background: #fff; }
+/* End of nav points */
+
+/* Images stuff */
   #home2 #hero .slides {
     overflow: hidden;
     position: absolute;
@@ -1637,6 +1644,8 @@ a:focus, button:focus {
                 font-size: 14px;
                 padding: 12px 25px;
                 margin: 0px 15px 15px 0px; } }
+/* End of image stuff */
+/* Video support! */
   #home2 #hero .video-modal {
     position: fixed;
     top: 0;
@@ -1689,6 +1698,8 @@ a:focus, button:focus {
       -ms-transition: all 0.4s ease-out;
       -o-transition: all 0.4s ease-out;
       transition: all 0.4s ease-out; }
+/* end of video stuff */
+
 #home2 #features {
   /* mixin found in partials/snippets */
   margin-top: 100px;
@@ -2205,6 +2216,7 @@ a:focus, button:focus {
     #home3 #hero {
       padding-top: 100px;
       height: 550px; } }
+/* Hero nav for Home 3 */
   #home3 #hero .slide-nav {
     position: absolute;
     top: 0;
@@ -2252,6 +2264,348 @@ a:focus, button:focus {
         height: 58px;
         background: url("../../images/slide-arrow.png") no-repeat;
         right: 30px; }
+/* End of hero nav for Home 3*/
+
+/* Nav points for Home 3 */
+  #home3 #hero nav {
+    z-index: 999;
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center; }
+  #home3 #hero nav a {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: #a2a2a2;
+    border-radius: 50%;
+    margin: 0 3px; }
+  #home3 #hero nav a.active {
+    background: #fff; }
+/* End of nav points for home 3*/
+
+/* Images stuff */
+  #home3 #hero .slides {
+    overflow: hidden;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    /* each slide */ }
+    #home3 #hero .slides .slide {
+      display: none;
+      z-index: 80;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      padding-top: 90px; }
+      #home3 #hero .slides .slide.active {
+        opacity: 1;
+        filter: alpha(opacity=100);
+        display: block;
+        z-index: 100; }
+      #home3 #hero .slides .slide.next {
+        z-index: 90; }
+        @media (min-width: 768px) {
+          #home3 #hero .slides .slide.next .bg {
+            -webkit-animation: slideLeft 700ms linear;
+            -moz-animation: slideLeft 700ms linear;
+            -o-animation: slideLeft 700ms linear;
+            -ms-animation: slideLeft 700ms linear;
+            animation: slideLeft 700ms linear; } }
+      #home3 #hero .slides .slide .container {
+        position: relative;
+        z-index: 3;
+        height: 100%; }
+      #home3 #hero .slides .slide .bg {
+        position: absolute;
+        top: 0;
+        left: -15px;
+        width: 102%;
+        height: 100%;
+        background-position: center center;
+        background-size: cover; }
+        @media (max-width: 767px) {
+          #home3 #hero .slides .slide .bg {
+            left: 0px; } }
+        #home3 #hero .slides .slide .bg:before {
+          position: absolute;
+          top: 10%;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          content: '';
+          background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.25)));
+          background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.25) 100%);
+          background: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.25));
+          background: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.25));
+          background: linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.25)); }
+        #home3 #hero .slides .slide .bg:after {
+          content: '';
+          position: absolute;
+          display: block;
+          height: 100%;
+          left: 0;
+          width: 100%;
+          top: 0; }
+      @media (max-width: 767px) {
+        #home3 #hero .slides .slide.first {
+          padding-top: 50px; } }
+      #home3 #hero .slides .slide.first .bg {
+        background-image: url("http://farm9.staticflickr.com/8482/8203794182_8004f8f636_b.jpg");
+        background-position: center 18%; }
+        #home3 #hero .slides .slide.first .bg:after {
+          background: rgba(52, 52, 58, 0.6); }
+      #home3 #hero .slides .slide.first .info h1.hero-text {
+        margin-top: 65px;
+        font-family: "Lato", "Helvetica Neue", Arial;
+        font-size: 44px;
+        line-height: 42px;
+        letter-spacing: 0.7px;
+        font-weight: 300;
+        color: #fff;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8); }
+        @media (max-width: 767px) {
+          #home3 #hero .slides .slide.first .info h1.hero-text {
+            font-size: 28px;
+            text-align: center; } }
+      #home3 #hero .slides .slide.first .info p {
+        color: rgba(255, 255, 255, 0.94);
+        font-family: "Lato", "Helvetica Neue", Arial;
+        letter-spacing: 0.4px;
+        margin-top: 15px;
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 32px; }
+      #home3 #hero .slides .slide.first .info .cta {
+        -webkit-animation-delay: 0.6s;
+        -moz-animation-delay: 0.6s;
+        -o-animation-delay: 0.6s;
+        -ms-animation-delay: 0.6s;
+        animation-delay: 0.6s;
+        margin-top: 40px; }
+        @media (max-width: 767px) {
+          #home3 #hero .slides .slide.first .info .cta {
+            text-align: center; } }
+        #home3 #hero .slides .slide.first .info .cta a {
+          position: relative;
+          margin: 0px 30px 0 0;
+          padding: 16px 25px;
+          letter-spacing: 0.3px;
+          font-family: "Lato", "Helvetica Neue", Arial;
+          text-transform: uppercase;
+          border: 2px solid rgba(255, 255, 255, 0.8);
+          background: rgba(0, 0, 0, 0.4); }
+          #home3 #hero .slides .slide.first .info .cta a:hover {
+            color: #252525;
+            background: #fff;
+            padding-right: 45px; }
+            #home3 #hero .slides .slide.first .info .cta a:hover .fa {
+              opacity: 1; }
+          #home3 #hero .slides .slide.first .info .cta a .fa {
+            opacity: 0;
+            font-size: 13px;
+            position: absolute;
+            color: #252525;
+            top: 21px;
+            right: 20px;
+            -webkit-transition: all 0.15s linear;
+            -moz-transition: all 0.15s linear;
+            -ms-transition: all 0.15s linear;
+            -o-transition: all 0.15s linear;
+            transition: all 0.15s linear; }
+          @media (max-width: 767px) {
+            #home3 #hero .slides .slide.first .info .cta a {
+              font-size: 14px;
+              padding: 12px 25px;
+              margin: 0px 15px 15px 0px; } }
+      #home3 #hero .slides .slide.first .mobiles img {
+        display: block;
+        margin: 0 auto;
+        width: 360px;
+        -webkit-animation-duration: 1.2s;
+        -moz-animation-duration: 1.2s;
+        -o-animation-duration: 1.2s;
+        animation-duration: 1.2s; }
+      @media (max-width: 767px) {
+        #home3 #hero .slides .slide.second {
+          padding-top: 40px; } }
+      #home3 #hero .slides .slide.second .bg {
+        /*background-image: url('http://24.media.tumblr.com/899355a7363be380170ecfcbdc9744d7/tumblr_myp93odkni1st5lhmo1_1280.jpg');*/
+        background-image: url("http://farm4.staticflickr.com/3758/9011116378_32e56983e3_b.jpg");
+        background-position: center 29%; }
+        #home3 #hero .slides .slide.second .bg:after {
+          background: rgba(5, 11, 29, 0.55); }
+      #home3 #hero .slides .slide.second h1.hero-text {
+        text-align: center;
+        font-family: "Lato", "Helvetica Neue", Arial;
+        font-size: 37px;
+        font-weight: 300;
+        color: #fff;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.65); }
+        @media (max-width: 767px) {
+          #home3 #hero .slides .slide.second h1.hero-text {
+            font-size: 25px; } }
+      #home3 #hero .slides .slide.second .sub-text {
+        -webkit-font-smoothing: antialiased;
+        -webkit-animation-delay: 0.6s;
+        -moz-animation-delay: 0.6s;
+        -o-animation-delay: 0.6s;
+        -ms-animation-delay: 0.6s;
+        animation-delay: 0.6s;
+        margin: 0 auto;
+        font-family: "Lato", "Helvetica Neue", Arial;
+        line-height: 29px;
+        margin-top: 25px;
+        text-align: center;
+        color: #fff;
+        font-weight: 400;
+        font-size: 17px;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+        width: 50%; }
+        @media (max-width: 991px) {
+          #home3 #hero .slides .slide.second .sub-text {
+            width: 70%; } }
+        @media (max-width: 767px) {
+          #home3 #hero .slides .slide.second .sub-text {
+            font-size: 15px; } }
+      #home3 #hero .slides .slide.second .video-wrapper {
+        text-align: center;
+        margin-top: 50px; }
+        @media (max-width: 767px) {
+          #home3 #hero .slides .slide.second .video-wrapper {
+            margin-top: 25px; } }
+        #home3 #hero .slides .slide.second .video-wrapper .video {
+          display: inline-block;
+          padding: 6px;
+          background: rgba(255, 255, 255, 0.5);
+          border-radius: 5px;
+          -webkit-animation-duration: 1.2s;
+          -moz-animation-duration: 1.2s;
+          -o-animation-duration: 1.2s;
+          animation-duration: 1.2s; }
+          #home3 #hero .slides .slide.second .video-wrapper .video img {
+            max-width: 280px;
+            cursor: pointer; }
+            @media (max-width: 767px) {
+              #home3 #hero .slides .slide.second .video-wrapper .video img {
+                max-width: 200px; } }
+      #home3 #hero .slides .slide.third {
+        padding-top: 115px; }
+        @media (max-width: 767px) {
+          #home3 #hero .slides .slide.third {
+            padding-top: 50px; } }
+        #home3 #hero .slides .slide.third .bg {
+          background-image: url("http://farm6.staticflickr.com/5267/5783999789_9d06e5d7df_b.jpg");
+          background-position: center 15%; }
+          #home3 #hero .slides .slide.third .bg:after {
+            background: rgba(3, 9, 27, 0.5); }
+        #home3 #hero .slides .slide.third h1, #home3 #hero .slides .slide.third .sub-text {
+          -webkit-animation-duration: 1s;
+          -moz-animation-duration: 1s;
+          -o-animation-duration: 1s;
+          animation-duration: 1s; }
+        #home3 #hero .slides .slide.third h1.hero-text {
+          text-align: center;
+          font-family: "Roboto";
+          font-size: 38px;
+          font-weight: 300;
+          color: #fff;
+          text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8); }
+          @media (max-width: 767px) {
+            #home3 #hero .slides .slide.third h1.hero-text {
+              font-size: 28px; } }
+        #home3 #hero .slides .slide.third .sub-text {
+          -webkit-font-smoothing: antialiased;
+          margin: 0 auto;
+          margin-top: 25px;
+          text-align: center;
+          color: #f7f7f7;
+          font-weight: 400;
+          font-size: 17px;
+          text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+          width: 50%; }
+          @media (max-width: 991px) {
+            #home3 #hero .slides .slide.third .sub-text {
+              width: 70%; } }
+          @media (max-width: 767px) {
+            #home3 #hero .slides .slide.third .sub-text {
+              font-size: 15px; } }
+        #home3 #hero .slides .slide.third .cta {
+          -webkit-animation-delay: 0.6s;
+          -moz-animation-delay: 0.6s;
+          -o-animation-delay: 0.6s;
+          -ms-animation-delay: 0.6s;
+          animation-delay: 0.6s;
+          text-align: center;
+          margin-top: 60px; }
+          #home3 #hero .slides .slide.third .cta a {
+            margin: 0px 20px; }
+            @media (max-width: 767px) {
+              #home3 #hero .slides .slide.third .cta a {
+                font-size: 14px;
+                padding: 12px 25px;
+                margin: 0px 15px 15px 0px; } }
+/* End of image stuff */
+/* Video support! */
+  #home3 #hero .video-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    visibility: hidden;
+    -webkit-transition: all 0.25s linear;
+    -moz-transition: all 0.25s linear;
+    -ms-transition: all 0.25s linear;
+    -o-transition: all 0.25s linear;
+    transition: all 0.25s linear; }
+    #home3 #hero .video-modal.active {
+      opacity: 1;
+      filter: alpha(opacity=100);
+      visibility: visible;
+      background: rgba(229, 230, 231, 0.5); }
+      #home3 #hero .video-modal.active .wrap {
+        -moz-transform: scale3d(1, 1, 1);
+        -o-transform: scale3d(1, 1, 1);
+        -ms-transform: scale3d(1, 1, 1);
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+        opacity: 1;
+        filter: alpha(opacity=100); }
+    #home3 #hero .video-modal .wrap {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      padding: 5px;
+      background: rgba(255, 255, 255, 0.65);
+      border-radius: 5px;
+      width: 630px;
+      height: 360px;
+      -moz-transform: scale3d(0.3, 0.3, 0.3);
+      -o-transform: scale3d(0.3, 0.3, 0.3);
+      -ms-transform: scale3d(0.3, 0.3, 0.3);
+      -webkit-transform: scale3d(0.3, 0.3, 0.3);
+      transform: scale3d(0.3, 0.3, 0.3);
+      opacity: 0;
+      filter: alpha(opacity=0);
+      -webkit-transition: all 0.4s ease-out;
+      -moz-transition: all 0.4s ease-out;
+      -ms-transition: all 0.4s ease-out;
+      -o-transition: all 0.4s ease-out;
+      transition: all 0.4s ease-out; }
+/* end of video stuff */
+
+
   #home3 #hero #cover-image {
     position: absolute;
     top: 0;

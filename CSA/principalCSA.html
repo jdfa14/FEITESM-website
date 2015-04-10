@@ -13,6 +13,7 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="../js/bootstrap/bootstrap.min.js"></script>
 	<script src="../js/theme.js"></script>
+	<script src="../js/principalCSA.js"></script>
 
 	<!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -27,7 +28,7 @@
 			        <span class="icon-bar"></span>
 			        <span class="icon-bar"></span>
 		      	</button>
-      			<a href="../index.html" class="navbar-brand">Consejo de Sociedades de Alumnos</a>
+      			<a href="../index.html" class="navbar-brand">FEITESM</a>
     		</div>
     		<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
       			<ul class="nav navbar-nav">
@@ -40,23 +41,23 @@
 	<div id="tabs">
 		<div class="container">
 			<div class="row header">
-				<h2>Bienvenido al CSA</h2>
+				<h2>Consejo de Sociedades de Alumnos</h2>
 			</div>
 			<div class="row">
 				<div class="col-md-12 tabs-wrapper">
 					<ul class="nav nav-tabs">
-					  	<li class="active"><a href="#mision" data-toggle="tab">Misi&oacute;n</a></li>
+					  	<li class="active"><a href="#quienessomos" data-toggle="tab">Qui&eacute;nes somos</a></li>
 					  	<li><a href="#vision" data-toggle="tab">Visi&oacute;n</a></li>
 					  	<li><a href="#contacto" data-toggle="tab">Contacto</a></li>
 					  	<li><a href="#redes" data-toggle="tab">Redes Sociales</a></li>
 					</ul>
 
 					<div class="tab-content">
-					  	<div class="tab-pane fade in active" id="mision">
+					  	<div class="tab-pane fade in active" id="quienessomos">
 					  		<div class="col-md-6 info">
-					  			<h4>Misi&oacute;n</h4>
-					  			<p>
-					  				El Consejo de Sociedades de Alumnos del Tecnol&oacute;gico de Monterrey busca fortalecer las competencias de trabajo en equipo y gesti&oacute;n de proyectos de las Sociedades de Alumnos con la intenci&oacute;n de que se generen eventos de aut&eacute;ntico impacto estudiantil. As&iacute; mismo, el Consejo de Sociedades de Alumnos brindar&aacute; herramientas para fomentar el desarrollo de iniciativas transversales entre sus miembros, fomentando las alianzas por &aacute;rea acad&eacute;mica, intereses afines o mera innovaci&oacute;n.
+					  			<h4>Qui&eacute;nes somos</h4>
+					  			<p> <span id="quienessomosParrafo">
+					  			</span>
 					  			</p>
 					  		</div>
 					  		<div class="col-md-6 image">
@@ -76,11 +77,13 @@
 					  	</div>
 					  	<div class="tab-pane fade" id="contacto">
 					  		<div class="col-md-6 info">
-					  			<h4>Contacto con la mesa directiva</h4>
+					  			<h4>Contacto</h4>
 					  			<p>
-					  				Whether you want to fill this paragraph with some text like I'm doing right now, this place is perfect to describe some features or anything you want - React has a complete solution for you.
+					  				<span id="correoContacto">Correo:</span>
 					  			</p>
-					  			
+					  			<p>
+					  				<span id="oficinaContacto">Oficina:</span>
+					  			</p>
 					  		</div>
 					  		<div class="col-md-6 image">
 					  			<img src="../images/tabs/pic2.png" class="img-responsive" style="position: relative;top: 15px;" alt="picture3" />
@@ -88,12 +91,18 @@
 					  	</div>
 					  	<div class="tab-pane fade" id="redes">
 					  		<div class="col-md-6 info">
-					  			<h4>Encuentranos en nuestras redes sociales</h4>
+					  			<h4>Redes sociales</h4>
 					  			<p>
-					  				Whether you want to fill this paragraph with some text like I'm doing right now, this place is perfect to describe some features or anything you want - React has a complete solution for you.
+					  				<span id="facebookRS">Facebook:</span>
 					  			</p>
-					  			<p>
-					  				You have complete control over the look & feel of your website, we offer the best quality so you take your site up and running in no time.
+								<p>
+					  				<span id="twitterRS">Twitter:</span>
+					  			</p>
+								<p>
+					  				<span id="instagramRS">Instagram:</span>
+					  			</p>
+								<p>
+					  				<span id="snapchatRS">Snapchat:</span>
 					  			</p>
 					  		</div>
 					  		<div class="col-md-6 image">
@@ -109,7 +118,7 @@
 	<div id="showcase">
 		<div class="container">
 			<div class="row header">
-				<h3>El consejo est&aacute; conformado por las siguientes Sociedades de Alumnos</h3>
+				<h3>Mesas directivas</h3>
 			</div>
 			<div class="row">
 				<div class="col-md-12 pics">

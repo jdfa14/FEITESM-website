@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />	
+	<title>Forma de Contacto FEITESM</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<!-- stylesheets -->
+	<link rel="stylesheet" type="text/css" href="css/compiled/theme.css">
+
+	<!-- javascript -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="js/bootstrap/bootstrap.min.js"></script>
+	<script src="js/vendor/jquery.validate.min.js"></script>
+	<script src="js/theme.js"></script>
+
+	<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body id="contact-us">
+	<header class="navbar navbar-inverse normal" role="banner">
+  		<div class="container">
+    		<div class="navbar-header">
+		      	<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+		      	</button>
+      			<a href="index.html" class="navbar-brand">FEITESM</a>
+    		</div>
+  		</div>
+	</header>
+
+	<div id="map" style="height:400px;">
+		
+		<iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.mx/?ie=UTF8&amp;ll=25.651565,-100.28954&amp;spn=0.123259,0.138495&amp;t=m&amp;z=15&amp;output=embed"></iframe>
+
+		<div class="marker-wrapper">
+			<div class="marker-icon"></div>
+			<div class="marker"></div>
+		</div>
+
+		<div id="directions">
+			<p>¿C&oacute;mo llegar?</p>
+			<form>
+				<div class="form-group">
+					<input class="form-control" type="text" placeholder="Escribe tu C&oacute;digo Postal" />
+				</div>
+				<button type="submit" class="button button-small">
+					<span>Aceptar</span>
+				</button>
+			</form>
+		</div>
+	</div>
+
+	<div id="info">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 message">
+					<h3>Env&iacute;anos un mensaje</h3>
+					<p>
+						Puedes enviarnos un mensaje respecto a cualquier tema. <br/> Nos pondremos en contacto contigo tan pronto sea posible.
+					</p>
+					<form role="form" id="contact-form" method="post">
+						<div class="form-group">
+				    		<label for="name">Nombre</label>
+				    		<input type="text" name="name" class="form-control" id="name" />
+				  		</div>
+				  		<div class="form-group">
+				    		<label for="email">Correo electr&oacute;nico</label>
+				    		<input type="email" name="email" class="form-control" id="email" />
+				  		</div>
+				  		<div class="form-group">
+				    		<label for="phone">Tel&eacute;fono</label>
+				    		<input type="text" name="phone" class="form-control" id="phone" />
+				  		</div>
+				  		<div class="form-group">
+				    		<label for="message">Tu mensaje</label>
+				    		<textarea name="message" class="form-control" id="message" rows="6"></textarea>
+				  		</div>
+				  		<div class="submit">
+				  			<input type="submit" class="button button-small" value="Enviar" />
+				  		</div>
+					</form>
+				</div>
+				<div class="col-md-4 contact">
+					<div class="address">
+						<h3>Direcci&oacute;n</h3>
+						<p>
+							Centro Estudiantil 221, <br />
+							Av. Eugenio Garza Sada 2501 - Sur, <br />
+							Col. Tecnol&oacute;gico, 64700, <br />
+							Monterrey, Nuevo Le&oacute;n, M&eacute;xico
+						</p>
+					</div>
+					<div class="phone">
+						<h3>Tel&eacute;fono</h3>
+						<p>
+							8358-2000 ext. 3881
+						</p>
+					</div>
+					<div class="social">
+						<a href="https://www.facebook.com/feitesm.mty" target="_blank" class="fb"><img src="images/social/fb.png" alt="facebook" /></a>
+						<a href="https://twitter.com/feitesm_mty" target="_blank" class="tw"><img src="images/social/tw.png" alt="twitter" /></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-3 copyright">
+					React © 2014
+				</div>
+				<div class="col-sm-6 menu">
+					<ul>
+	      				<li>
+	          				<a href="features.html">Features</a>
+	        			</li>
+	        			<li>
+	        				<a href="services.html">Services</a>
+	        			</li>
+	        			<li>
+	          				<a href="pricing.html">Pricing</a>
+	        			</li>
+	        			<li>
+	          				<a href="aboutus.html">About us</a>
+	        			</li>
+	        			<li>
+	          				<a href="blog.html">Blog</a>
+	        			</li>
+	      			</ul>
+				</div>
+				<div class="col-sm-3 social">
+					<a href="#">
+						<img src="images/social/social-tw.png" alt="twitter" />
+					</a>
+					<a href="#">
+						<img src="images/social/social-dbl.png" alt="dribbble" />
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

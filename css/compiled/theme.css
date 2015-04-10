@@ -675,6 +675,56 @@ a:focus, button:focus {
   @media (max-width: 767px) {
     #home #hero {
       height: 550px; } }
+/* Hero nav for Home 1 */
+  #home #hero .slide-nav {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 140px;
+    z-index: 200;
+    text-indent: 100%;
+    overflow: hidden;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    -webkit-transition: opacity 0.2s linear;
+    -moz-transition: opacity 0.2s linear;
+    -ms-transition: opacity 0.2s linear;
+    -o-transition: opacity 0.2s linear;
+    transition: opacity 0.2s linear; }
+    #home #hero .slide-nav:hover {
+      opacity: 1;
+      filter: alpha(opacity=100); }
+    #home #hero .slide-nav.prev:after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+      width: 19px;
+      height: 58px;
+      background: url("../../images/slide-arrow.png") no-repeat;
+      left: 30px;
+      -moz-transform: rotate(180deg);
+      -o-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+      -webkit-transform: rotate(180deg);
+      transform: rotate(180deg); }
+    #home #hero .slide-nav.next {
+      right: 0; }
+      #home #hero .slide-nav.next:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto 0;
+        width: 19px;
+        height: 58px;
+        background: url("../../images/slide-arrow.png") no-repeat;
+        right: 30px; }
+/* End of hero nav for Home 1*/
+
   #home #hero:before {
     position: absolute;
     content: '';
@@ -1257,6 +1307,8 @@ a:focus, button:focus {
   @media (max-width: 767px) {
     #home2 #hero {
       height: 550px; } }
+
+/* Slide configuration for home2 init*/
   #home2 #hero .slide-nav {
     position: absolute;
     top: 0;
@@ -1304,6 +1356,8 @@ a:focus, button:focus {
         height: 58px;
         background: url("../../images/slide-arrow.png") no-repeat;
         right: 30px; }
+/* End of slinde-nav */
+
   #home2 #hero nav {
     z-index: 999;
     position: absolute;
@@ -2151,6 +2205,53 @@ a:focus, button:focus {
     #home3 #hero {
       padding-top: 100px;
       height: 550px; } }
+  #home3 #hero .slide-nav {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 140px;
+    z-index: 200;
+    text-indent: 100%;
+    overflow: hidden;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    -webkit-transition: opacity 0.2s linear;
+    -moz-transition: opacity 0.2s linear;
+    -ms-transition: opacity 0.2s linear;
+    -o-transition: opacity 0.2s linear;
+    transition: opacity 0.2s linear; }
+    #home3 #hero .slide-nav:hover {
+      opacity: 1;
+      filter: alpha(opacity=100); }
+    #home3 #hero .slide-nav.prev:after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+      width: 19px;
+      height: 58px;
+      background: url("../../images/slide-arrow.png") no-repeat;
+      left: 30px;
+      -moz-transform: rotate(180deg);
+      -o-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+      -webkit-transform: rotate(180deg);
+      transform: rotate(180deg); }
+    #home3 #hero .slide-nav.next {
+      right: 0; }
+      #home3 #hero .slide-nav.next:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto 0;
+        width: 19px;
+        height: 58px;
+        background: url("../../images/slide-arrow.png") no-repeat;
+        right: 30px; }
   #home3 #hero #cover-image {
     position: absolute;
     top: 0;

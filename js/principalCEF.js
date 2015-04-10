@@ -1,0 +1,30 @@
+var xmlhttp = new XMLHttpRequest();
+var url = "https://spreadsheets.google.com/feeds/cells/1cBfce3qNwrXgEFhRQ1KuWrZBxjFot4nvPLm-1k-RR-Q/odrb2ix/public/basic?hl=en_US&alt=json";
+
+xmlhttp.onreadystatechange = function() {
+	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+		var jsonResponse = JSON.parse(xmlhttp.responseText);
+		getInformation(jsonResponse);
+	}
+}
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
+
+function getInformation(response) {
+	var i;
+	var arrInfo = response.feed.entry;
+	var quienessomos_p = document.getElementById("quienessomosParrafo");
+	var correo_p = document.getElementById("correoContacto");
+	var facebook_p = document.getElementById("facebookRS");
+	for(i in arrInfo) {
+		if(arrInfo[i].title.$t == "A2") {
+			quienessomos_p.firstChild.data = arrInfo[i].content.$t;
+		}
+		else if(arrInfo[i].title.$t == "C2") {
+			facebook_p.firstChild.data = arrInfo[i].content.$t;
+		}
+		else if(arrInfo[i].title.$t == "C5") {
+			correo_p.firstChild.data = arrInfo[i].content.$t;
+		}
+	}
+}

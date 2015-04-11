@@ -79,16 +79,77 @@
 				</header>
 
 				<div id="hero">
-					<div id="cover-image" class="animated fadeIn">
-						<div class="container">
-							<h1 class="hero-text animated fadeIn">Bienvenidos a la p&aacute;gina oficial de la Federaci&oacute;n de Estudiantes del Tecnol&oacute;gico de Monterrey.</h1>
-							<div class="cta animated fadeIn">
-								<a href="signup.html" class="button">M&aacute;s informaci&oacute;n</a>
-								
+					<!-- Botones de navegacion manual -->
+					<a class="slide-nav prev" href="#">Prev</a>
+					<a class="slide-nav next" href="#">Next</a>
+					<!-- Puntitos de navegacion manual (se deben crear tantas <a> tags como imagenes haya)-->
+					<nav>
+						<a class="active" href="#"></a>
+						<a href="#"></a>
+						<a href="#"></a>
+					</nav>
+
+					<div class="slides"> <!-- Aqui se crearan tantas dics slides cuantas sean necesarias -->
+
+						<div class="slide first active">
+							<div class="bg"></div>
+							<div class="container">
+								<div class="row">
+									<div class="col-sm-6 info">
+										<h1 class="hero-text">
+											Make it awesome.
+										</h1>
+										<p>
+											React is the best way to get a great design out of the box with lots of options for customization.
+										</p>
+										<div class="cta">
+											<a href="features.html" class="button-outline">
+												TRY IT FREE
+												<i class="fa fa-chevron-right"></i>
+											</a>
+										</div>
+									</div>
+									<div class="col-sm-6 hidden-xs mobiles">
+										<!-- <img src="images/static-hero.png" class="animated fadeInLeft" alt="devices" /> -->
+										<img src="images/devices3.png" class="animated fadeInLeft img-responsive" alt="devices" />
+									</div>
+								</div>
 							</div>
-							<div class="screenshot animated fadeInUp">
-								<img src="images/ss2.png" class="img-responsive" alt="screenshot" />
+						</div>
+						<div class="slide second">
+							<div class="bg"></div>
+							<div class="container">
+								<h1 class="hero-text">Get the best technology videos online for free.</h1>
+								<p class="sub-text">
+									Using simple HTML markup, get a complete existing website with great design up and running in no time.
+								</p>
+								<div class="video-wrapper">
+									<div class="video animated fadeInUp">
+										<img class="demo-player" alt="videoplayer" videoID="jofNR_WkoCE"/>
+									</div>
+								</div>
 							</div>
+						</div>
+						<div class="slide third">
+							<div class="bg"></div>
+							<div class="container">
+								<h1 class="hero-text animated fadeInLeft">
+									Track any data point in your app in real time.
+								</h1>
+								<p class="sub-text animated fadeInLeft">
+									Try our 30 day trial so you can check out all the features that we offer, no contracts
+									or credit card required.
+								</p>
+								<div class="cta animated fadeInRight">
+									<a href="features.html" class="button-outline">See the tour</a>
+									<a href="signup.html" class="button">Sign up free</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="video-modal">
+						<div class="wrap" id="wrap-for-video">
 						</div>
 					</div>
 				</div>
@@ -361,6 +422,129 @@
 					slowBg = 50 - slowScroll;
 					
 				$('#cover-image').css("background-position", "50% " + slowBg + "%");
+			});
+		});
+	</script>
+
+	<script type="text/javascript">
+		$(function(){
+			var videoImages = document.getElementsByClassName("demo-player");
+			for(var i = 0; i < videoImages.length; i++){
+				videoImages[i].setAttribute("src","http://img.youtube.com/vi/"+videoImages[i].getAttribute("videoID")+"/0.jpg");
+			}
+		})
+
+		$(function () {
+			var $navDots = $("#hero nav a")
+			var $next = $(".slide-nav.next");
+			var $prev = $(".slide-nav.prev");
+			var $slides = $("#hero .slides .slide");
+			var actualIndex = 0;
+			var swiping = false;
+			var interval;
+
+			$navDots.click(function (e) {
+				e.preventDefault();
+				if (swiping) { return; }
+				swiping = true;
+
+				actualIndex = $navDots.index(this);
+				updateSlides(actualIndex);
+			});
+
+			$next.click(function (e) {
+				e.preventDefault();
+				if (swiping) { return; }
+				swiping = true;
+
+				clearInterval(interval);
+				interval = null;
+
+				actualIndex++;
+				if (actualIndex >= $slides.length) {
+					actualIndex = 0;
+				}
+
+				updateSlides(actualIndex);
+			});
+
+			$prev.click(function (e) {
+				e.preventDefault();
+				if (swiping) { return; }
+				swiping = true;
+
+				clearInterval(interval);
+				interval = null;
+
+				actualIndex--;
+				if (actualIndex < 0) {
+					actualIndex = $slides.length - 1;
+				}
+
+				updateSlides(actualIndex);
+			});
+
+			function updateSlides(index) {
+				// update nav dots
+				$navDots.removeClass("active");
+				$navDots.eq(index).addClass("active");
+
+				// update slides
+				var $activeSlide = $("#hero .slide.active");
+				var $nextSlide = $slides.eq(index);
+
+				$activeSlide.fadeOut();
+				$nextSlide.addClass("next").fadeIn();
+				
+				setTimeout(function () {
+					$slides.removeClass("next").removeClass("active");
+					$nextSlide.addClass("active");
+					$activeSlide.removeAttr('style');
+					swiping = false;
+				}, 1000);
+			}
+
+
+			interval = setInterval(function () {
+				if (swiping) { return; }
+				swiping = true;
+
+				actualIndex++;
+				if (actualIndex >= $slides.length) {
+					actualIndex = 0;
+				}
+
+				updateSlides(actualIndex);
+			}, 5000);
+
+
+			var $videoModal = $(".video-modal");
+			$(".demo-player").click(function (elem) {
+				var ifr = document.createElement("IFRAME");
+				ifr.setAttribute("src","https://www.youtube.com/embed/" + this.getAttribute("videoID") + "?autoplay=1");
+				ifr.setAttribute("frameborder","0");
+				ifr.setAttribute("autoplay","1");
+				ifr.width = 620+"px";
+				ifr.height= 350+"px";
+				// Lo siguiente puede fallar en IE
+				ifr.setAttribute("webkitallowfullscreen","");
+				ifr.setAttribute("mozallowfullscreen","");
+				ifr.setAttribute("allowfullscreen","");
+				document.getElementById("wrap-for-video").appendChild(ifr);
+
+				$videoModal.toggleClass("active");
+				clearInterval(interval);
+				interval = null;
+			});
+
+			$videoModal.click(function () {
+				$videoModal.removeClass("active");
+				setTimeout(function () {
+					$videoModal.find(".wrap").html('');
+				}, 1000);
+			})
+			$videoModal.find(".wrap").click(function (e) {
+				e.stopPropagation();
 			});
 		});
 	</script>

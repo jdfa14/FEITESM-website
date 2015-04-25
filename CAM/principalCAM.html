@@ -35,17 +35,12 @@
 				for (var i = resultados-1; i >= 0; i--) {
 					if(json.feed.entry[i].title.$t == "A2"){
 						document.getElementById("quienesSomosTexto").innerHTML = json.feed.entry[i].content.$t
-						break;
+						
 					}
-					
-				};
-				
-				//Vision
-				for (var i = resultados-1; i >= 0; i--) {
-					if(json.feed.entry[i].title.$t == "B2"){
-						document.getElementById("visionTexto").innerHTML = json.feed.entry[i].content.$t
-						break;
-					}
+          else if(json.feed.entry[i].title.$t == "B2"){
+            //document.getElementById("visionTexto").innerHTML = json.feed.entry[i].content.$t
+            
+          }
 					
 				};
 			}

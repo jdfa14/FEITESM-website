@@ -29,60 +29,35 @@
 				json = JSON.parse(xhr.responseText.trim());
 				var resultados = json.feed.openSearch$totalResults.$t;
 				
-				//QuienesSomos
 				for (var i = resultados-1; i >= 0; i--) {
 					if(json.feed.entry[i].title.$t == "A2"){
 						document.getElementById("quienesSomosTexto").innerHTML = json.feed.entry[i].content.$t
-						break;
 					}
-					
-				};
-				
-				//Vision
-				for (var i = resultados-1; i >= 0; i--) {
+					else if(json.feed.entry[i].title.$t == "C6"){
+						//document.getElementById("redesTexto5").innerHTML = json.feed.entry[i].content.$t
+						
+					}
+					else if(json.feed.entry[i].title.$t == "C5"){
+						//document.getElementById("redesTexto4").innerHTML = json.feed.entry[i].content.$t
+						
+					}
+					else if(json.feed.entry[i].title.$t == "C4"){
+						document.getElementById("redesTexto3").innerHTML = json.feed.entry[i].content.$t
+					}
+					else  if(json.feed.entry[i].title.$t == "C3"){
+						document.getElementById("redesTexto2").innerHTML = json.feed.entry[i].content.$t
+					}
+					else if(json.feed.entry[i].title.$t == "C2"){
+						document.getElementById("redesTexto1").innerHTML = json.feed.entry[i].content.$t
+					}
 					if(json.feed.entry[i].title.$t == "B2"){
 						document.getElementById("visionTexto").innerHTML = json.feed.entry[i].content.$t
-						break;
 					}
 					
 				};
 
-				//Redes
-				for (var i = resultados-1; i >= 0; i--) {
-					if(json.feed.entry[i].title.$t == "C2"){
-						document.getElementById("redesTexto1").innerHTML = json.feed.entry[i].content.$t
-						break;
-					}
-					
-				};
-				for (var i = resultados-1; i >= 0; i--) {
-					if(json.feed.entry[i].title.$t == "C3"){
-						document.getElementById("redesTexto2").innerHTML = json.feed.entry[i].content.$t
-						break;
-					}
-					
-				};
-				for (var i = resultados-1; i >= 0; i--) {
-					if(json.feed.entry[i].title.$t == "C4"){
-						document.getElementById("redesTexto3").innerHTML = json.feed.entry[i].content.$t
-						break;
-					}
-					
-				};
-				for (var i = resultados-1; i >= 0; i--) {
-					if(json.feed.entry[i].title.$t == "C5"){
-						document.getElementById("redesTexto4").innerHTML = json.feed.entry[i].content.$t
-						break;
-					}
-					
-				};
-				for (var i = resultados-1; i >= 0; i--) {
-					if(json.feed.entry[i].title.$t == "C6"){
-						document.getElementById("redesTexto5").innerHTML = json.feed.entry[i].content.$t
-						break;
-					}
-					
-				};
+
+			
 			}
 
 			}
@@ -151,17 +126,33 @@
 					  		</div>					  		
 					  	</div>
 					  	<div class="tab-pane fade" id="contacto">
-					  		<div class="col-md-6 info">
-					  			<h4>Contacto</h4>
-					  			<p id = "redesTexto4">
-					  			</p>
-					  			<p id = "redesTexto5">
-					  			</p>
-					  			
-					  		</div>
-					  		<div class="col-md-6 image">
-					  			<img src="../images/tabs/pic2.png" class="img-responsive" style="position: relative;top: 15px;" alt="picture3" />
-					  		</div>
+					    							<div class="col-md-12 message">
+                  <div id="contact-us">
+                    <div id="info-contact">
+                      <form role="form" id="contact-form" method="post">
+                        <div class="form-group">
+                          <label for="name">Nombre</label>
+                          <input type="text" name="name" class="form-control" id="name" />
+                        </div>
+                          <div class="form-group">
+                            <label for="email">Correo electr&oacute;nico</label>
+                            <input type="email" name="email" class="form-control" id="email" />
+                          </div>
+                        <div class="form-group">
+                          <label for="phone">Tel&eacute;fono</label>
+                          <input type="text" name="phone" class="form-control" id="phone" />
+                        </div>
+                        <div class="form-group">
+                          <label for="message">Tu mensaje</label>
+                          <textarea name="message" class="form-control" id="message" rows="6"></textarea>
+                        </div>
+                        <div class="submit">
+                          <input type="submit" class="button button-small" value="Enviar" />
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+  							</div>
 					  	</div>
 					  	<div class="tab-pane fade" id="redes">
 					  		<div class="col-md-6 info">

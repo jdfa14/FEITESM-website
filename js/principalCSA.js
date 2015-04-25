@@ -37,10 +37,10 @@ function getInformation(response) {
 			snapchat_p.firstChild.data = arrInfo[i].content.$t;
 		}
 		else if(arrInfo[i].title.$t == "C6") {
-			correo_p.firstChild.data = arrInfo[i].content.$t;
+			//correo_p.firstChild.data = arrInfo[i].content.$t;
 		}
 		else if(arrInfo[i].title.$t == "C7") {
-			oficina_p.firstChild.data = arrInfo[i].content.$t;
+			//oficina_p.firstChild.data = arrInfo[i].content.$t;
 		}
 	}
 }

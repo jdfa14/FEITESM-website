@@ -24,7 +24,7 @@ function getInformation(response) {
 			facebook_p.firstChild.data = arrInfo[i].content.$t;
 		}
 		else if(arrInfo[i].title.$t == "C5") {
-			correo_p.firstChild.data = arrInfo[i].content.$t;
+			//correo_p.firstChild.data = arrInfo[i].content.$t;
 		}
 	}
 }

@@ -8,11 +8,14 @@
 
 	<!-- stylesheets -->
 	<link rel="stylesheet" type="text/css" href="../css/compiled/theme.css">
+  <link rel="stylesheet" type="text/css" href="../css/app.css">
 
 	<!-- javascript -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="../js/bootstrap/bootstrap.min.js"></script>
+  <script src="../js/vendor/jquery.flexslider.min.js"></script>
 	<script src="../js/theme.js"></script>
+  <script src="../js/vendor/jquery.validate.min.js"></script>
 	<script>
 
 	function load(){
@@ -50,22 +53,16 @@
 		}
 		
 		</script>
-
-	<!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-      <![endif]-->
   </head>
   <body id="features" onload="load()">
   	<header class="navbar navbar-inverse normal" role="banner">
   		<div class="container">
-<<<<<<< HEAD
     		<div class="navbar-header">
 		      	<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
 			        <span class="icon-bar"></span>
 			        <span class="icon-bar"></span>
 			        <span class="icon-bar"></span>
 		      	</button>
-		      	<a href="../index.html"><img src="../images/icon/favicon-96x96.png" class="animated fadeInLeft img-responsive" alt="logo"/></a>
       			<a href="../index.html" class="navbar-brand">FEITESM</a>
     		</div>
     		<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
@@ -73,22 +70,6 @@
       				
       			</ul>
     		</nav>
-=======
-  			
-  			<div class="navbar-header">
-  				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
-  					<span class="icon-bar"></span>
-  					<span class="icon-bar"></span>
-  					<span class="icon-bar"></span>
-  				</button>
-  				<a href="../index.html" class="navbar-brand">FEITESM</a>
-  			</div>
-  			<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-  				<ul class="nav navbar-nav">
-
-  				</ul>
-  			</nav>
->>>>>>> origin/master
   		</div>
   	</header>
 
@@ -101,7 +82,6 @@
   				<div class="col-md-12 tabs-wrapper">
   					<ul class="nav nav-tabs">
   						<li class="active"><a href="#mision" data-toggle="tab">Qui&eacute;nes somos</a></li>
-  						<li><a href="#vision" data-toggle="tab">Visi&oacute;n</a></li>
   						<li><a href="#contacto" data-toggle="tab">Contacto</a></li>
   						<li><a href="#redes" data-toggle="tab">Redes Sociales</a></li>
   					</ul>
@@ -118,26 +98,34 @@
   								<img src="../images/tabs/pic1.png" class="img-responsive" alt="picture1" />
   							</div>
   						</div>
-  						<div class="tab-pane fade" id="vision">
-  							<div class="col-md-6 image">
-  								<img src="../images/portfolioitem1.png" class="img-responsive" alt="picture2" />
-  							</div>
-  							<div class="col-md-6 info">
-  								<h4>Visi&oacute;n</h4>
-  								<p id="visionTexto">
-  								</p>
-  							</div>					  		
-  						</div>
-  						<div class="tab-pane fade" id="contacto">
-  							<div class="col-md-6 info">
-  								<h4>Contacto</h4>
-  								<p>
-  									Whether you want to fill this paragraph with some text like I'm doing right now, this place is perfect to describe some features or anything you want - React has a complete solution for you.
-  								</p>
 
-  							</div>
-  							<div class="col-md-6 image">
-  								<img src="../images/tabs/pic2.png" class="img-responsive" style="position: relative;top: 15px;" alt="picture3" />
+  						<div class="tab-pane fade" id="contacto">
+  							<div class="col-md-12 message">
+                  <div id="contact-us">
+                    <div id="info-contact">
+                      <form role="form" id="contact-form" method="post">
+                        <div class="form-group">
+                          <label for="name">Nombre</label>
+                          <input type="text" name="name" class="form-control" id="name" />
+                        </div>
+                          <div class="form-group">
+                            <label for="email">Correo electr&oacute;nico</label>
+                            <input type="email" name="email" class="form-control" id="email" />
+                          </div>
+                        <div class="form-group">
+                          <label for="phone">Tel&eacute;fono</label>
+                          <input type="text" name="phone" class="form-control" id="phone" />
+                        </div>
+                        <div class="form-group">
+                          <label for="message">Tu mensaje</label>
+                          <textarea name="message" class="form-control" id="message" rows="6"></textarea>
+                        </div>
+                        <div class="submit">
+                          <input type="submit" class="button button-small" value="Enviar" />
+                        </div>
+                      </form>
+                    </div>
+                  </div>
   							</div>
   						</div>
   						<div class="tab-pane fade" id="redes">
@@ -159,6 +147,32 @@
   			</div>
   		</div>
   	</div>
+
+    <div id="about-us">
+      <div id="info">
+        <div class="container">
+            <div class="row team">
+              <div class="col-md-12 team-row">
+                <img src="../images/testimonials/testimonial1.jpg" data-toggle="tooltip" title="Eric Smith - CEO" alt="testimonial" />
+                <img src="../images/testimonials/testimonial2.jpg" data-toggle="tooltip" title="Rachel Dawes - PM" alt="testimonial" />
+                <img src="../images/testimonials/testimonial3.jpg" data-toggle="tooltip" title="Henry Hill - Developer" alt="testimonial" />
+                <img src="../images/testimonials/testimonial4.jpg" data-toggle="tooltip" title="Ana Rich - Designer" alt="testimonial" />
+                <img src="../images/testimonials/testimonial7.jpg" data-toggle="tooltip" title="Jessica Welch - Designer" alt="testimonial" />
+                <img src="../images/testimonials/testimonial8.jpg" data-toggle="tooltip" title="Charly - iOS Developer" alt="testimonial" />
+              </div>
+              <div class="col-md-12 team-row">
+                <img src="../images/testimonials/testimonial5.jpg" data-toggle="tooltip" title="Karen Stewart - PM" alt="testimonial" />
+                <img src="../images/testimonials/testimonial4.jpg" data-toggle="tooltip" title="Charly - iOS Developer" alt="testimonial" />
+                <img src="../images/testimonials/testimonial7.jpg" data-toggle="tooltip" title="Jessica Welch - Designer" alt="testimonial" />
+                <img src="../images/testimonials/testimonial8.jpg" data-toggle="tooltip" title="John Raynolds - UI/UX" alt="testimonial" />
+                <img src="../images/testimonials/testimonial3.jpg" data-toggle="tooltip" title="Henry Hill - Developer" alt="testimonial" />
+                <img src="../images/testimonials/testimonial2.jpg" data-toggle="tooltip" title="Rachel Dawes - PM" alt="testimonial" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
   	<div id="showcase">
   		<div class="container">
@@ -220,5 +234,14 @@
   			</div>
   		</div>
   	</div>
+    <script type="text/javascript">
+      $(function() {
+      $('.flexslider').flexslider({
+        directionNav: false,
+        slideshowSpeed: 4000
+      });
+      $('[data-toggle="tooltip"]').tooltip();
+      });
+    </script>
   </body>
-  </html>
+</html>

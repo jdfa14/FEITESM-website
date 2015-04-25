@@ -13,21 +13,21 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="../js/bootstrap/bootstrap.min.js"></script>
 	<script src="../js/theme.js"></script>
-				<script>
+	<script>
 
-			function load(){
-				xhr=new XMLHttpRequest();
+	function load(){
+		xhr=new XMLHttpRequest();
 		xhr.onload=respuesta;
 		var url= "https://spreadsheets.google.com/feeds/cells/1cBfce3qNwrXgEFhRQ1KuWrZBxjFot4nvPLm-1k-RR-Q/ovogp8e/public/basic?hl=en_US&alt=json";
 		xhr.open("GET", url, true);
 		xhr.send();
-			}
-			function respuesta(){
-				var json;
-				if(xhr.status==200){
-				json = JSON.parse(xhr.responseText.trim());
-				var resultados = json.feed.openSearch$totalResults.$t;
-				
+	}
+	function respuesta(){
+		var json;
+		if(xhr.status==200){
+			json = JSON.parse(xhr.responseText.trim());
+			var resultados = json.feed.openSearch$totalResults.$t;
+
 				//QuienesSomos
 				for (var i = resultados-1; i >= 0; i--) {
 					if(json.feed.entry[i].title.$t == "A2"){
@@ -47,17 +47,18 @@
 				};
 			}
 
-			}
+		}
 		
-			</script>
+		</script>
 
 	<!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-</head>
-<body id="features" onload="load()">
-	<header class="navbar navbar-inverse normal" role="banner">
+      <![endif]-->
+  </head>
+  <body id="features" onload="load()">
+  	<header class="navbar navbar-inverse normal" role="banner">
   		<div class="container">
+<<<<<<< HEAD
     		<div class="navbar-header">
 		      	<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
 			        <span class="icon-bar"></span>
@@ -72,136 +73,152 @@
       				
       			</ul>
     		</nav>
+=======
+  			
+  			<div class="navbar-header">
+  				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+  					<span class="icon-bar"></span>
+  					<span class="icon-bar"></span>
+  					<span class="icon-bar"></span>
+  				</button>
+  				<a href="../index.html" class="navbar-brand">FEITESM</a>
+  			</div>
+  			<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+  				<ul class="nav navbar-nav">
+
+  				</ul>
+  			</nav>
+>>>>>>> origin/master
   		</div>
-	</header>
+  	</header>
 
-	<div id="tabs">
-		<div class="container">
-			<div class="row header">
-				<h2>Consejo de Acciones por M&eacute;xico</h2>
-			</div>
-			<div class="row">
-				<div class="col-md-12 tabs-wrapper">
-					<ul class="nav nav-tabs">
-					  	<li class="active"><a href="#mision" data-toggle="tab">Qui&eacute;nes somos</a></li>
-					  	<li><a href="#vision" data-toggle="tab">Visi&oacute;n</a></li>
-					  	<li><a href="#contacto" data-toggle="tab">Contacto</a></li>
-					  	<li><a href="#redes" data-toggle="tab">Redes Sociales</a></li>
-					</ul>
+  	<div id="tabs">
+  		<div class="container">
+  			<div class="row header">
+  				<h2>Consejo de Acciones por M&eacute;xico</h2>
+  			</div>
+  			<div class="row">
+  				<div class="col-md-12 tabs-wrapper">
+  					<ul class="nav nav-tabs">
+  						<li class="active"><a href="#mision" data-toggle="tab">Qui&eacute;nes somos</a></li>
+  						<li><a href="#vision" data-toggle="tab">Visi&oacute;n</a></li>
+  						<li><a href="#contacto" data-toggle="tab">Contacto</a></li>
+  						<li><a href="#redes" data-toggle="tab">Redes Sociales</a></li>
+  					</ul>
 
-					<div class="tab-content">
-					  	<div class="tab-pane fade in active" id="mision">
-					  		<div class="col-md-6 info">
-					  			<h4>Qui&eacute;nes somos</h4>
-					  			<p id="quienesSomosTexto">
-					  				
-					  			</p>
-					  		</div>
-					  		<div class="col-md-6 image">
-					  			<img src="../images/tabs/pic1.png" class="img-responsive" alt="picture1" />
-					  		</div>
-					  	</div>
-					  	<div class="tab-pane fade" id="vision">
-					  		<div class="col-md-6 image">
-					  			<img src="../images/portfolioitem1.png" class="img-responsive" alt="picture2" />
-					  		</div>
-					  		<div class="col-md-6 info">
-					  			<h4>Visi&oacute;n</h4>
-					  			<p id="visionTexto">
-					  			</p>
-					  		</div>					  		
-					  	</div>
-					  	<div class="tab-pane fade" id="contacto">
-					  		<div class="col-md-6 info">
-					  			<h4>Contacto</h4>
-					  			<p>
-					  				Whether you want to fill this paragraph with some text like I'm doing right now, this place is perfect to describe some features or anything you want - React has a complete solution for you.
-					  			</p>
-					  			
-					  		</div>
-					  		<div class="col-md-6 image">
-					  			<img src="../images/tabs/pic2.png" class="img-responsive" style="position: relative;top: 15px;" alt="picture3" />
-					  		</div>
-					  	</div>
-					  	<div class="tab-pane fade" id="redes">
-					  		<div class="col-md-6 info">
-					  			<h4>Redes sociales</h4>
-					  			<p>
-					  				Whether you want to fill this paragraph with some text like I'm doing right now, this place is perfect to describe some features or anything you want - React has a complete solution for you.
-					  			</p>
-					  			<p>
-					  				You have complete control over the look & feel of your website, we offer the best quality so you take your site up and running in no time.
-					  			</p>
-					  		</div>
-					  		<div class="col-md-6 image">
-					  			<img src="../images/tabs/pic2.png" class="img-responsive" style="position: relative;top: 15px;" alt="picture3" />
-					  		</div>
-					  	</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+  					<div class="tab-content">
+  						<div class="tab-pane fade in active" id="mision">
+  							<div class="col-md-6 info">
+  								<h4>Qui&eacute;nes somos</h4>
+  								<p id="quienesSomosTexto">
 
-	<div id="showcase">
-		<div class="container">
-			<div class="row header">
-				<h3>Mesas directivas</h3>
-			</div>
-			<div class="row">
-				<div class="col-md-12 pics">
-					<a class="pic" href="#">
-						<img src="../images/blog1.png" alt="blog1" />
-						<div class="bg">
-							<p>Edificar</p>
-						</div>
-					</a>
-					<a class="pic" href="#">
-						<img src="../images/blog2.png" alt="blog2" />
-						<div class="bg">
-							<p>Recrea</p>
-						</div>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
+  								</p>
+  							</div>
+  							<div class="col-md-6 image">
+  								<img src="../images/tabs/pic1.png" class="img-responsive" alt="picture1" />
+  							</div>
+  						</div>
+  						<div class="tab-pane fade" id="vision">
+  							<div class="col-md-6 image">
+  								<img src="../images/portfolioitem1.png" class="img-responsive" alt="picture2" />
+  							</div>
+  							<div class="col-md-6 info">
+  								<h4>Visi&oacute;n</h4>
+  								<p id="visionTexto">
+  								</p>
+  							</div>					  		
+  						</div>
+  						<div class="tab-pane fade" id="contacto">
+  							<div class="col-md-6 info">
+  								<h4>Contacto</h4>
+  								<p>
+  									Whether you want to fill this paragraph with some text like I'm doing right now, this place is perfect to describe some features or anything you want - React has a complete solution for you.
+  								</p>
 
-	<div id="footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-3 copyright">
-					FEITESM 2015
-				</div>
-				<div class="col-sm-6 menu">
-					<ul>
-	      				<li class="active">
-	          				<a href="features.html">Features</a>
-	        			</li>
-	        			<li>
-	        				<a href="services.html">Services</a>
-	        			</li>
-	        			<li>
-	          				<a href="pricing.html">Pricing</a>
-	        			</li>
-	        			<li>
-	          				<a href="support.html">Support</a>
-	        			</li>
-	        			<li>
-	          				<a href="blog.html">Blog</a>
-	        			</li>
-	      			</ul>
-				</div>
-				<div class="col-sm-3 social">
-					<a href="#">
-						<img src="../images/social/social-tw.png" alt="twitter" />
-					</a>
-					<a href="#">
-						<img src="../images/social/social-dbl.png" alt="dribbble" />
-					</a>					
-				</div>
-			</div>
-		</div>
-	</div>
-</body>
-</html>
+  							</div>
+  							<div class="col-md-6 image">
+  								<img src="../images/tabs/pic2.png" class="img-responsive" style="position: relative;top: 15px;" alt="picture3" />
+  							</div>
+  						</div>
+  						<div class="tab-pane fade" id="redes">
+  							<div class="col-md-6 info">
+  								<h4>Redes sociales</h4>
+  								<p>
+  									Whether you want to fill this paragraph with some text like I'm doing right now, this place is perfect to describe some features or anything you want - React has a complete solution for you.
+  								</p>
+  								<p>
+  									You have complete control over the look & feel of your website, we offer the best quality so you take your site up and running in no time.
+  								</p>
+  							</div>
+  							<div class="col-md-6 image">
+  								<img src="../images/tabs/pic2.png" class="img-responsive" style="position: relative;top: 15px;" alt="picture3" />
+  							</div>
+  						</div>
+  					</div>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+
+  	<div id="showcase">
+  		<div class="container">
+  			<div class="row header">
+  				<h3>Mesas directivas</h3>
+  			</div>
+  			<div class="row">
+  				<div class="col-md-12 pics">
+  					<a class="pic" href="#">
+  						<img src="../images/blog1.png" alt="blog1" />
+  						<div class="bg">
+  							<p>Edificar</p>
+  						</div>
+  					</a>
+  					<a class="pic" href="#">
+  						<img src="../images/blog2.png" alt="blog2" />
+  						<div class="bg">
+  							<p>Recrea</p>
+  						</div>
+  					</a>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+
+  	<div id="footer">
+  		<div class="container">
+  			<div class="row">
+  				<div class="col-sm-3 copyright">
+  					FEITESM 2015
+  				</div>
+  				<div class="col-sm-6 menu">
+  					<ul>
+  						<li class="active">
+  							<a href="features.html">Features</a>
+  						</li>
+  						<li>
+  							<a href="services.html">Services</a>
+  						</li>
+  						<li>
+  							<a href="pricing.html">Pricing</a>
+  						</li>
+  						<li>
+  							<a href="support.html">Support</a>
+  						</li>
+  						<li>
+  							<a href="blog.html">Blog</a>
+  						</li>
+  					</ul>
+  				</div>
+  				<div class="col-sm-3 social">
+  					<a href="#">
+  						<img src="../images/social/social-tw.png" alt="twitter" />
+  					</a>
+  					<a href="#">
+  						<img src="../images/social/social-dbl.png" alt="dribbble" />
+  					</a>					
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+  </body>
+  </html>

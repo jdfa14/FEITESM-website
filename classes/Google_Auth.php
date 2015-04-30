@@ -33,9 +33,10 @@ class Google_Auth
 		if(isset($_GET['code']))
 		{
 			$this->client->authenticate($_GET['code']);
-			$this->setToken($this->client->getAccessToken());
-			$this->storeUser($this->getPayLoad());
 
+			//CAMBIAR
+			$this->setToken($this->client->getAccessToken()); // we set the token
+			$this->login($this->getPayLoad()); // we try to login on system
 			return true;
 		}
 		return false;
@@ -43,15 +44,10 @@ class Google_Auth
 
 	protected function setToken($token)
 	{
-		$_SESSION['access_token'] = $token;
 		$this->client->setAccessToken($token); 
-
 	}
 
-	public function logout()
-	{
-		unset($_SESSION['access_token']);
-	}
+	
 
 	protected function getPayLoad()
 	{
@@ -66,6 +62,49 @@ class Google_Auth
 			VALUES ({$payLoad['sub']}, '{$payLoad['email']}')
 			ON DUPLICATE KEY UPDATE id = id
 		";
+		$this->db->query($sql);
+	}
+
+	protected function login($payLoad)
+	{
+		$sql = "
+			SELECT *
+			FROM google_users
+			WHERE google_id = '{$payLoad['sub']}' AND email = '{$payLoad['email']}'
+		";
+		if($this->db->checkIfNotEmpty($sql)){
+			//Usuario registrado
+			$userData = $this->db->getFirstRow($sql);
+			//añadimos actividad del usuario
+			$this->addActivity($userData['id'],$this->client->getAccessToken());
+			$_SESSION['access_token'] = $this->client->getAccessToken();
+			$_SESSION['id'] = $userData['id'];
+			return true;
+		}
+		else{
+			//Usuario no registrado o malas credenciales
+			// No hacemos nada y sera como si no iniciamos sesion
+			return false;
+		}
+	}
+
+	public function logout()
+	{
+		$sql = "
+				DELETE FROM sessions
+				WHERE id = '{$_SESSION['id']}'
+			";
+		$this->db->query($sql);
+		unset($_SESSION['access_token']);
+		unset($_SESSION['id']);
+	}
+
+	protected function addActivity($id, $access_token){
+		$sql = "
+				INSERT INTO sessions (id,access_token)
+				VALUES ('{$id}','{$access_token}')
+				ON DUPLICATE KEY UPDATE id = id
+			";
 		$this->db->query($sql);
 	}
 }

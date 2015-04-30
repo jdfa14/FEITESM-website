@@ -1,5 +1,6 @@
 <?php
 	require_once 'app/init.php';
-	$auth = new Google_Auth();
+	$db = new Database;
+	$auth = new Google_Auth($db);
 	$auth->logout();
 	header('Location: index.php');

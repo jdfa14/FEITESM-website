@@ -13,4 +13,16 @@ class Database
 	{
 		return $this->mysqli->query($sql);
 	}
+
+	public function checkIfNotEmpty($sql)
+	{
+		$response = $this->query($sql);
+		return $response->num_rows > 0;
+	}
+
+	public function getFirstRow($sql)
+	{
+		$response = $this->query($sql);
+		return $response->fetch_assoc();
+	}
 }

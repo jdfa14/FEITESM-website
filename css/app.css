@@ -1,0 +1,28 @@
+.head {
+	width: 90%;
+}
+
+.editableTA {
+	min-height: 25px;
+	min-width: 200px;
+}
+
+.editBtn {
+	position: relative;
+}
+
+/* edition buttons */
+.editDiv{
+	position: relative;
+}
+
+.editDiv button{
+	position: absolute;
+	left: -50px;
+	top: -50px;
+}
+
+p , h1, h2, h3, h4, h5
+{
+	min-height: 10px;
+}

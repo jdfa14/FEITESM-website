@@ -27,7 +27,7 @@
 
 	<div class="st-container">
 		<nav class="nav-menu">
-			<h3>Men&uacute;</h3>
+			<h3>Consejos</h3>
 			
 			<a href="CAM/principalCAM.html" class="item">
 				Consejo de Acciones por M&eacute;xico (CAM)
@@ -49,17 +49,11 @@
 			</a>
 
 			<div class="social">
-				<a href="#">
+				<a href="http://www.twitter.com/feitesm_mty">
 					<i class="fa fa-twitter"></i>
 				</a>
-				<a href="#">
+				<a href="http://www.facebook.com/feitesm.mty">
 					<i class="fa fa-facebook"></i>
-				</a>
-				<a href="#">
-					<i class="fa fa-google-plus"></i>
-				</a>
-				<a href="#">
-					<i class="fa fa-youtube-play"></i>
 				</a>
 			</div>
 
@@ -247,7 +241,9 @@
 						</div>
 					</div>
 				</div>
-
+				<div style="text-align: center">
+				<iframe src="https://www.google.com/calendar/embed?src=feitesm.website%40gmail.com&	ctz=America/Mexico_City" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+			</div>
 				<div id="grid-first">
 					<div class="container">
 						<div class="row header">
@@ -410,39 +406,7 @@
 	 	 </div>
 	</div>
 
-	<script type="text/javascript">
-		$(function () {
-			// Makes the demo video appear/disappear 
-			var $demo = $("#demo");
-			$('#demo').on('hidden.bs.modal', function () {
-			$demo.find("iframe").remove();
-			})
-			$('#demo').on('show.bs.modal', function () {
-				if (!$demo.find("iframe").length) {
-					$demo.find(".modal-body").append("<iframe src='http://player.vimeo.com/video/22439234' width='650' height='370' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>")
-				}			
-			});
-
-			// triggers the off-canvas panel
-			$(".sidebar-toggle").click(function (e) {
-				e.stopPropagation();
-				$(".st-container").toggleClass("nav-effect");
-			});
-			$(".st-pusher").click(function () {
-				$(".st-container").removeClass("nav-effect");
-			});
-
-			 // parallax header
-			 $('#cover-image').css("background-position", "50% 50%");
-			$(window).scroll(function() {
-				var scroll = $(window).scrollTop(), 
-					slowScroll = scroll/4,
-					slowBg = 50 - slowScroll;
-					
-				$('#cover-image').css("background-position", "50% " + slowBg + "%");
-			});
-		});
-	</script>
+    <script src="js/nav-bar.js"></script>
 
 	<script type="text/javascript">
 		$(function(){

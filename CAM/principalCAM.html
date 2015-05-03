@@ -9,6 +9,7 @@
 	<!-- stylesheets -->
 	<link rel="stylesheet" type="text/css" href="../css/compiled/theme.css">
   <link rel="stylesheet" type="text/css" href="../css/app.css">
+  <link rel="stylesheet" type="text/css" href="../css/vendor/font-awesome.css">
 
 	<!-- javascript -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -50,22 +51,54 @@
 		</script>
   </head>
   <body id="features" onload="load()">
+    <div class="st-container">
+    <nav class="nav-menu">
+      <h3>Consejos</h3>
+      
+      <a href="#" class="item">
+        Consejo de Acciones por M&eacute;xico (CAM)
+      </a>
+      <a href="../CARE/principalCARE.html" class="item">
+        Consejo de Asociaciones Regionales y Extranjeras (CARE)
+      </a>
+      <a href="../CCE/principalCCE.html" class="item">
+        Consejo de Comunidades Estudiantiles (CCE)
+      </a>
+      <a href="../CEF/principalCEF.html" class="item">
+        Consejo Estudiantil de Filantrop&iacute;a (CEF)
+      </a>
+      <a href="../CSA/principalCSA.html" class="item">
+        Consejo de Sociedades de Alumnos (CSA)
+      </a>
+      <a href="../contactus.html" class="item">
+        Contacto
+      </a>
+
+      <div class="social">
+        <a href="http://www.twitter.com/feitesm_mty">
+          <i class="fa fa-twitter"></i>
+        </a>
+        <a href="http://www.facebook.com/feitesm.mty">
+          <i class="fa fa-facebook"></i>
+        </a>
+      </div>
+
+      
+    </nav>
+
+    <div class="st-pusher">
+      <div class="st-content">
   	<header class="navbar navbar-inverse normal" role="banner">
   		<div class="container">
     		<div class="navbar-header">
-		      	<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
-			        <span class="icon-bar"></span>
-			        <span class="icon-bar"></span>
-			        <span class="icon-bar"></span>
-		      	</button>
-      			<a href="../index.html"><img src="../images/icon/favicon-96x96.png" class="animated fadeInLeft img-responsive" alt="logo"/></a>
+		 
 				<a href="../index.html" class="navbar-brand">FEITESM</a>
     		</div>
-    		<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-      			<ul class="nav navbar-nav">
-      				
-      			</ul>
-    		</nav>
+          <div class="sidebar-toggle">
+              <div class="line"></div>
+              <div class="line"></div>
+              <div class="line"></div>
+            </div>
   		</div>
   	</header>
 
@@ -127,12 +160,15 @@
   						<div class="tab-pane fade" id="redes">
   							<div class="col-md-6 info">
   								<h4>Redes sociales</h4>
-  								<p>
-  									Whether you want to fill this paragraph with some text like I'm doing right now, this place is perfect to describe some features or anything you want - React has a complete solution for you.
-  								</p>
-  								<p>
-  									You have complete control over the look & feel of your website, we offer the best quality so you take your site up and running in no time.
-  								</p>
+  								<a href="https://www.facebook.com/cam.mty">
+  									Facebook: cam.mty
+  								</a>
+                </br>
+                </br>
+
+  								<a href="https://twitter.com/cam_mty">
+  									Twitter: cam_mty
+  								</a>
   							</div>
   							<div class="col-md-6 image">
   								<img src="../images/cam/logo.jpg" class="img-responsive" style="position: relative;top: 15px;" alt="picture3" />
@@ -229,16 +265,19 @@
   					</ul>
   				</div>
   				<div class="col-sm-3 social">
-  					<a href="#">
+  					<a href="http://www.facebook.com/feitesm.mty">
   						<img src="../images/social/social-fb.png" alt="facebook" />
   					</a>
-  					<a href="#">
+  					<a href="http://www.twitter.com/feitesm_mty">
   						<img src="../images/social/social-tw.png" alt="twitter" />
   					</a>					
   				</div>
   			</div>
   		</div>
   	</div>
+      </div><!-- end .st-content -->
+    </div><!-- end .st-pusher -->
+  </div><!-- end .st-container -->
     <script type="text/javascript">
       $(function() {
       $('.flexslider').flexslider({
@@ -248,5 +287,6 @@
       $('[data-toggle="tooltip"]').tooltip();
       });
     </script>
+    <script src="../js/nav-bar.js"></script>
   </body>
 </html>

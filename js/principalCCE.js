@@ -24,13 +24,13 @@ function getInformation(response) {
 			quienessomos_p.firstChild.data = arrInfo[i].content.$t;
 		}
 		else if(arrInfo[i].title.$t == "C2") {
-			facebook_p.firstChild.data = arrInfo[i].content.$t;
+			//facebook_p.firstChild.data = arrInfo[i].content.$t;
 		}
 		else if(arrInfo[i].title.$t == "C3") {
-			twitter_p.firstChild.data = arrInfo[i].content.$t;
+			//twitter_p.firstChild.data = arrInfo[i].content.$t;
 		}
 		else if(arrInfo[i].title.$t == "C4") {
-			instagram_p.firstChild.data = arrInfo[i].content.$t;
+			//instagram_p.firstChild.data = arrInfo[i].content.$t;
 		}
 	}
 }

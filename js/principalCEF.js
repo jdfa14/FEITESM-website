@@ -21,7 +21,7 @@ function getInformation(response) {
 			quienessomos_p.firstChild.data = arrInfo[i].content.$t;
 		}
 		else if(arrInfo[i].title.$t == "C2") {
-			facebook_p.firstChild.data = arrInfo[i].content.$t;
+			//facebook_p.firstChild.data = arrInfo[i].content.$t;
 		}
 		else if(arrInfo[i].title.$t == "C5") {
 			//correo_p.firstChild.data = arrInfo[i].content.$t;

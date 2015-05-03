@@ -957,7 +957,7 @@ a:focus, button:focus {
         #home3 #hero .slides .slide.first {
           padding-top: 50px; } }
       #home3 #hero .slides .slide.first .bg {
-        background-image: url('../../images/banner/back1.jpg');
+        background-image: url('https://drive.google.com/uc?export=download&id=0B_V63ukt6Nk2TzhBb3FjUkNELXM');
 		background-repeat:no-repeat;
 		width:100%;
 		height:100%;
@@ -1041,7 +1041,7 @@ a:focus, button:focus {
           padding-top: 40px; } }
       #home3 #hero .slides .slide.second .bg {
         /*background-image: url('http://24.media.tumblr.com/899355a7363be380170ecfcbdc9744d7/tumblr_myp93odkni1st5lhmo1_1280.jpg');*/
-        background-image: url("../../images/banner/back2.jpg");
+        background-image: url("https://drive.google.com/uc?export=download&id=0B_V63ukt6Nk2dG56VHVPd2VFT28");
         background-position: center 29%; }
         #home3 #hero .slides .slide.second .bg:after {
           background: rgba(5, 11, 29, 0.55); }
@@ -1114,7 +1114,7 @@ a:focus, button:focus {
 			font-weight: 300;
 			line-height: 32px; }
         #home3 #hero .slides .slide.third .bg {
-          background-image: url("../../images/banner/back3.jpg");
+          background-image: url("https://drive.google.com/uc?export=download&id=0B_V63ukt6Nk2WTZXMVNFTXZlLVE");
           background-position: center 15%; }
           #home3 #hero .slides .slide.third .bg:after {
             background: rgba(3, 9, 27, 0.5); }
@@ -4044,8 +4044,8 @@ a:focus, button:focus {
       text-align: center;
       margin-bottom: 35px; }
     #about-us #info .team img {
-      margin: 0px 20px;
-      max-width: 90px;
+      margin: 0px 10px;
+      max-width: 200px;
       border-radius: 10px;
       position: relative;
       top: 0px;

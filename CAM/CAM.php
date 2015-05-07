@@ -8,6 +8,71 @@ $client = new Resources_Manager(new Database);
 $orgName = "cam";
 setcookie('orgName', $orgName, time() + 24 * 60 * 60);
 
+
+// Datos para tabs
+$tabsInfo = $client->getTabsInfo($orgName);
+$tabs_head = "";
+$tabs_content = "";
+if($tabsInfo->num_rows > 0)
+{
+	while($row = $tabsInfo->fetch_assoc()){
+		$tabs_head .='<li> <a class="tab_element" href="' .'#Tab-'. $row["id_inf"] . '" data-toggle="tab">'.$row["tabla_titulo"].'</a></li>';
+		if($row['contacto'] == 1){
+			$tabs_content .= 	'<div class="tab-pane fade in" id="Tab-'.$row["id_inf"].'">
+										<div hidden>
+											<p class="contacto">1</p>
+											<p class="redes">0</p>
+										</div>
+			  							<div class="col-md-12 message">
+											<div id="contact-us">
+												<div id="info-contact">
+													<form role="form" id="contact-form" method="post" novalidate="novalidate">
+													<div class="form-group">
+														<label for="name">Nombre</label>
+														<input type="text" name="name" class="form-control" id="name">
+													</div>
+													<div class="form-group">
+														<label for="email">Correo electrónico</label>
+														<input type="email" name="email" class="form-control" id="email">
+													</div>
+													<div class="form-group">
+														<label for="phone">Teléfono</label>
+														<input type="text" name="phone" class="form-control" id="phone">
+													</div>
+													<div class="form-group">
+														<label for="message">Tu mensaje</label>
+														<textarea name="message" class="form-control" id="message" rows="6"></textarea>
+													</div>
+													<div class="submit">
+														<input type="submit" class="button button-small" value="Enviar">
+													</div>
+												</form>
+											</div>
+										</div>
+		  							</div>
+		  						</div>';
+		}else if($row['redes'] == 1){
+		}else {
+			$tabs_content .= 	'<div class="tab-pane fade in" id="Tab-'.$row["id_inf"].'">
+									<div hidden>
+										<p class="contacto">0</p>
+										<p class="redes">0</p>
+									</div>
+									<div class="col-md-6 info">
+										<h4 class ="titulo">'.$row["titulo"].'</h4>
+										<p class="contenido">'
+											.$row["contenido"].
+										'</p>
+									</div>
+									<div class="col-md-6 image">
+										<img src="'.$row["img_url"].'" class="img-responsive " alt="Foto"/>
+									</div>
+								</div>';
+		}
+	}
+}
+
+//Datos para las imagenes de los integrantes
 $staffInfo = $client->getStaffInfo($orgName);
 $staff = "";
 if($tabsInfo->num_rows > 0)
@@ -67,9 +132,16 @@ if($auth->isLoggedIn())
 	<script src="../js/vendor/bootbox.min.js"></script>
 	<script src="../js/theme.js"></script>
 	<script src="../js/vendor/jquery.validate.min.js"></script>
-	<?php if($auth->isLoggedIn()) echo '<script src="js/admin.js"></script>'; ?>
+	<?php if($auth->isLoggedIn()) echo '<script src="../js/admin.js"></script>'; ?>
 </head>
-<body id="features" onload="load()">
+
+<body id="features" >
+	<script type="text/javascript">
+		$(document).ready(function (){
+			$("#tabs .tabs-wrapper .nav-tabs li").first().addClass("active");
+			$("#tabs .tabs-wrapper .tab-content .tab-pane").first().addClass("active");
+		});
+	</script>
     <div class="st-container">
     <?php include (__ROOT__.'/nav.php'); ?>
 
@@ -79,118 +151,28 @@ if($auth->isLoggedIn())
   			<?php include (__ROOT__.'/header.php'); ?>
   		</header>
 
-  	<div id="tabs">
-  		<div class="container">
-  			<div class="row header">
-  				<h2>Consejo de Acciones por M&eacute;xico</h2>
-  			</div>
-  			<div class="row">
-  				<div class="col-md-12 tabs-wrapper">
-  					<ul class="nav nav-tabs">
-  						<li class="active"><a href="#mision" data-toggle="tab">Qui&eacute;nes somos</a></li>
-  						<li><a href="#contacto" data-toggle="tab">Contacto</a></li>
-  						<li><a href="#redes" data-toggle="tab">Redes Sociales</a></li>
-  					</ul>
+	<div id="tabs">
+		<div class="container">
+			<div class="row header">
+				<h2>Consejo de Acciones por M&eacute;xico</h2>
+			</div>
+			<div class="row">
+				<div class="col-md-12 tabs-wrapper">
+					<ul class="nav nav-tabs">
+						<?php
+							echo $tabs_head;
+						?>
+					</ul>
 
-  					<div class="tab-content">
-  						<div class="tab-pane fade in active" id="mision">
-  							<div class="col-md-6 info">
-  								<h4>¡Bienvenidos!</h4>
-  								<p id="quienesSomosTexto">
-
-  								</p>
-  							</div>
-  							<div class="col-md-6 image">
-  								<img src="https://drive.google.com/uc?export=download&id=0B_V63ukt6Nk2ZnFVT3FyUktzX0E" class="img-responsive" />
-  							</div>
-  						</div>
-
-  						<div class="tab-pane fade" id="contacto">
-  							<div class="col-md-12 message">
-                  <div id="contact-us">
-                    <div id="info-contact">
-                      <form role="form" id="contact-form" method="post">
-                        <div class="form-group">
-                          <label for="name">Nombre</label>
-                          <input type="text" name="name" class="form-control" id="name" />
-                        </div>
-                          <div class="form-group">
-                            <label for="email">Correo electr&oacute;nico</label>
-                            <input type="email" name="email" class="form-control" id="email" />
-                          </div>
-                        <div class="form-group">
-                          <label for="phone">Tel&eacute;fono</label>
-                          <input type="text" name="phone" class="form-control" id="phone" />
-                        </div>
-                        <div class="form-group">
-                          <label for="message">Tu mensaje</label>
-                          <textarea name="message" class="form-control" id="message" rows="6"></textarea>
-                        </div>
-                        <div class="submit">
-                          <input type="submit" class="button button-small" value="Enviar" />
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-  							</div>
-  						</div>
-  						<div class="tab-pane fade" id="redes">
-  							<div class="col-md-6 info">
-  								<h4>Redes sociales</h4>
-								<p><span>Facebook:</span>
-  								<a href="https://www.facebook.com/cam.mty" target="_blank">
-  									cam.mty
-  								</a></p>
-								<p><span>Twitter:</span>
-  								<a href="https://twitter.com/cam_mty" target="_blank">
-  									cam_mty
-  								</a></p>
-								<p><span>Instagram:</span>
-  								<a href="https://instagram.com/cam.mty" target="_blank">
-  									cam.mty
-  								</a></p>
-  							</div>
-  							<div class="col-md-6 image">
-  								<img src="https://drive.google.com/uc?export=download&id=0B_V63ukt6Nk2TExFQllid0Vyenc" class="img-responsive" style="position: relative;top: 15px;" alt="picture3" />
-  							</div>
-  						</div>
-  					</div>
-  				</div>
-  			</div>
-  		</div>
-  	</div>
-	
-	<!--<div id="showcase">
-  		<div class="container">
-  			<div class="row header">
-  				<h3>Nuestro Equipo</h3>
-  			</div>
-			<div id="about-us">
-				<div id="info">
-					<div class="container">
-						<div class="row team">
-							<div class="col-md-12 team-row">
-								<img src="../images/testimonials/testimonial1.jpg" data-toggle="tooltip" title="Eric Smith - CEO" alt="testimonial" />
-								<img src="../images/testimonials/testimonial2.jpg" data-toggle="tooltip" title="Rachel Dawes - PM" alt="testimonial" />
-								<img src="../images/testimonials/testimonial3.jpg" data-toggle="tooltip" title="Henry Hill - Developer" alt="testimonial" />
-								<img src="../images/testimonials/testimonial4.jpg" data-toggle="tooltip" title="Ana Rich - Designer" alt="testimonial" />
-								<img src="../images/testimonials/testimonial7.jpg" data-toggle="tooltip" title="Jessica Welch - Designer" alt="testimonial" />
-								<img src="../images/testimonials/testimonial8.jpg" data-toggle="tooltip" title="Charly - iOS Developer" alt="testimonial" />
-							</div>
-							<div class="col-md-12 team-row">
-								<img src="../images/testimonials/testimonial5.jpg" data-toggle="tooltip" title="Karen Stewart - PM" alt="testimonial" />
-								<img src="../images/testimonials/testimonial4.jpg" data-toggle="tooltip" title="Charly - iOS Developer" alt="testimonial" />
-								<img src="../images/testimonials/testimonial7.jpg" data-toggle="tooltip" title="Jessica Welch - Designer" alt="testimonial" />
-								<img src="../images/testimonials/testimonial8.jpg" data-toggle="tooltip" title="John Raynolds - UI/UX" alt="testimonial" />
-								<img src="../images/testimonials/testimonial3.jpg" data-toggle="tooltip" title="Henry Hill - Developer" alt="testimonial" />
-								<img src="../images/testimonials/testimonial2.jpg" data-toggle="tooltip" title="Rachel Dawes - PM" alt="testimonial" />
-							</div>
-						</div>
+					<div class="tab-content">
+						<?php
+							echo $tabs_content;
+						?>
 					</div>
 				</div>
-			 </div>
+			</div>
 		</div>
-	</div>-->
+	</div>
 
   	<div id="showcase">
   		<div class="container">

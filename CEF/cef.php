@@ -1,3 +1,15 @@
+<?php
+require_once '../app/init.php';
+
+$db = new Database;
+$googleClient = new Google_Client();
+$auth = new Google_Auth($db,$googleClient);
+$client = new Resources_Manager(new Database);
+$orgName = "care";
+setcookie('orgName', $orgName, time() + 24 * 60 * 60);
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -138,36 +150,6 @@
 			 </div>
 		</div>
 	</div>
-	
-	<!--<div id="showcase">
-		<div class="container">
-			<div class="row header">
-				<h3>Mesas directivas</h3>
-			</div>
-			<div class="row">
-				<div class="col-md-12 pics">
-					<a class="pic" href="#">
-						<img src="../images/blog1.png" alt="blog1" />
-						<div class="bg">
-							<p>Asociaci&oacute;n de </p>
-						</div>
-					</a>
-					<a class="pic" href="#">
-						<img src="../images/blog2.png" alt="blog2" />
-						<div class="bg">
-							<p>Asociaci&oacute;n de </p>
-						</div>
-					</a>
-					<a class="pic" href="#">
-						<img src="../images/blog3.png" alt="blog3" />
-						<div class="bg">
-							<p>Asociaci&oacute;n de </p>
-						</div>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>-->
 
 	<?php include (__ROOT__.'/footer.php'); ?>
 	<script type="text/javascript">

@@ -24,7 +24,7 @@ function addDeleteButton(tab_li){
 				//ajax para eliminar de la base de datos
 				$.ajax({
 					type : 'POST',
-					url : 'php/remove_information.php',
+					url : '/feitesm-website/php/remove_information.php',
 					data : {
 						'tab_id' : $(id_tab).attr('id')
 					},
@@ -336,7 +336,7 @@ function agregarTab(){
 							'<div class="col-md-4">' +
 								'<input id="img_url" name="img_url" type="text" placeholder="images/default.jpg" class="form-control input-md" onblur="imgPreview()">' +
 							'</div>' +
-							'<img id="img_preview" class="col-md-4" src="images/default.jpg" alt="preview" onError="this.src=\'images/default.jpg\'; "/>' +
+							'<img id="img_preview" class="col-md-4" src="images/default.jpg" alt="preview" onError="this.src=\'/feitesm-website/images/default.jpg\'; "/>' +
 						'</div>' +
 						'<div class="form-group"> ' +
 							'<input type="submit" hidden>' +
@@ -384,7 +384,7 @@ function agregarTab(){
 
 					$.ajax({
 						type : 'POST',
-						url : 'php/add_information.php',
+						url : '/feitesm-website/php/add_information.php',
 						data : {
 							'org_Name' : readCookie('orgName'),
 							'tab_name' : tab_name,
@@ -433,7 +433,7 @@ function editTabOnDocument(id_inf,tab_name,titulo,contenido,img_url,contacto,red
 function removeTabOnDocument(id_inf){
 	$.ajax({
 		type : 'POST',
-		url : 'php/remove_information.php',
+		url : '/feitesm-website/php/remove_information.php',
 		data : {
 			'id_inf' : id_inf
 		},
@@ -542,9 +542,9 @@ function editarTab(){
 						'<div class="form-group" '+classesForInputs['divs']+' >' +
 							'<label class="col-md-4 control-label" for="img_url">URL de imagen</label>' +
 							'<div class="col-md-4">' +
-								'<input id="img_url" name="img_url" type="text" placeholder="images/default.jpg" class="form-control input-md" onblur="imgPreview()" value="'+img_url+'" >' +
+								'<input id="img_url" name="img_url" type="text" placeholder="/feitesm-website/images/default.jpg" class="form-control input-md" onblur="imgPreview()" value="'+img_url+'" >' +
 							'</div>' +
-							'<img id="img_preview" class="col-md-4" src="'+img_url+'" alt="preview" onError="this.src=\'images/default.jpg\'; "/>' +
+							'<img id="img_preview" class="col-md-4" src="'+img_url+'" alt="preview" onError="this.src=\'/feitesm-website/images/default.jpg\'; "/>' +
 						'</div>' +
 						'<div class="form-group"> ' +
 							'<input type="submit" hidden>' +
@@ -600,7 +600,7 @@ function editarTab(){
 					
 					$.ajax({
 						type : 'POST',
-						url : 'php/actualiza_informacion.php',
+						url : '/feitesm-website/php/actualiza_informacion.php',
 						data : {
 							'id_inf' : id_inf,
 							'tab_name' : tab_name,
@@ -710,7 +710,7 @@ function addStaff(){
 								'<input id="img_url" name="img_url" type="text" placeholder="URL imagen" class="form-control input-md" onblur="imgPreview()"> ' +
 								'<span class="help-block">p.e. images/foto.jpg </span>' +
 							'</div>' +
-							'<img id="img_preview" class="col-md-4" src="images/default.jpg" alt="preview" onError="this.src=\'images/default.jpg\'; ">'+
+							'<img id="img_preview" class="col-md-4" src="/feitesm-website/images/default.jpg" alt="preview" onError="this.src=\'/feitesm-website/images/default.jpg\'; ">'+
 						'</div> ' +
 						'<div class="form-group"> ' +
 							'<input type="submit" hidden>' +
@@ -854,7 +854,7 @@ function addStaffOnDocument(nombres, apellido_p, apellido_m, cargo, img_url,inHe
 	//ajax Stuff
 	$.ajax({
 		type : 'POST',
-		url : 'php/agrega_integrante.php',
+		url : '/feitesm-website/php/agrega_integrante.php',
 		data : {
 			'name_org' : readCookie('orgName'),
 			'nombres' : nombres,
@@ -880,7 +880,7 @@ function addStaffOnDocument(nombres, apellido_p, apellido_m, cargo, img_url,inHe
 function updateStaffOnDocument(nombres, apellido_p,apellido_m,cargo,img_url,id_int){
 	$.ajax({
 		type : 'POST',
-		url : 'php/actualiza_integrante.php',
+		url : '/feitesm-website/php/actualiza_integrante.php',
 		data : {
 			'id_int' : id_int,
 			'nombres' : nombres,
@@ -906,7 +906,7 @@ function removeStaffOnDocument(id_int){
 	//ajax stuff
 	$.ajax({
 		type : 'POST',
-		url : 'php/elimina_integrante.php',
+		url : '/feitesm-website/php/elimina_integrante.php',
 		data : {
 			'id_int' : id_int
 		},

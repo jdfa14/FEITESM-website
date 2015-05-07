@@ -35,6 +35,17 @@ p , h1, h2, h3, h4, h5
 	min-height: 10px;
 }
 
+.boxText .header{
+	text-align: center;
+}
+
+.boxText .header h3{
+	font-size: 26px;
+	color: #555C68;
+	line-height: 25px;
+	font-weight: 300;
+}
+
 #tabs .tabs-wrapper .tab-content .tab-pane .info h4, #tabs .tabs-wrapper .tab-content .tab-pane .info p, #tabs .tabs-wrapper .tab-content .tab-pane .info img {
 	margin: auto;
 	padding: 1px;

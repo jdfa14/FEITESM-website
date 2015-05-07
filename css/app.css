@@ -12,14 +12,31 @@
 }
 
 /* edition buttons */
+li a .editDiv button{
+	top: -8px;
+}
+
 .editDiv{
 	position: relative;
 }
 
 .editDiv button{
 	position: absolute;
-	left: -50px;
-	top: -50px;
+	width: 34px;
+	height: 34px;
+}
+
+.editable{
+	background: #f5f5f5;
+	box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.45), inset 0px 0px 1px 1px white;
+	margin: auto;
+	padding: 1px;
+	min-width: 100%;
+	min-height: 20px;
+}
+
+.boxy{
+	box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.45), inset 0px 0px 1px 1px white;
 }
 
 p , h1, h2, h3, h4, h5

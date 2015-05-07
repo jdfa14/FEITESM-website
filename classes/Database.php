@@ -25,4 +25,13 @@ class Database
 		$response = $this->query($sql);
 		return $response->fetch_assoc();
 	}
+
+	public function select($what,$from,$where){
+		$sql = "
+			SELECT {$what}
+			FROM {$from}
+			WHERE {$where}
+		";
+		return $this->query($sql);
+	}
 }

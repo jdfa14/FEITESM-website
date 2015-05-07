@@ -5,10 +5,37 @@ require_once 'app/init.php';
 $db = new Database;
 $googleClient = new Google_Client();
 $auth = new Google_Auth($db,$googleClient);
+$client = new Resources_Manager(new Database);
+$orgName = "feitesm";
 
 if($auth->checkRedirectCode())
 {
 	header('Location index.php');
+}
+//echo $client->getOrgID($orgName);
+
+// Datos para tabs
+$tabsInfo = $client->getTabsInfo($orgName);
+$tabs_head = "";
+$tabs_content = "";
+if($tabsInfo->num_rows > 0)
+{	
+	$flag = "active";
+	$flag2 ="a";
+	while($row = $tabsInfo->fetch_assoc()){
+		$tabs_head .='<li> <a class="editable" href="' .'#'. $row["id_inf"] . '" data-toggle="tab">'.$row["tabla_titulo"].'</a></li>';
+		$tabs_content .= '<div class="tab-pane fade" id="'.$row["id_inf"].'">
+							<div class="col-md-6 info">
+								<h4 class ="editable">'.$row["titulo"].'</h4>
+								<p class="editable">
+									'.$row["contenido"].'
+								</p>
+							</div>
+							<div class="col-md-6 image">
+								<img src="'.$row["img_url"].'" class="img-responsive editable" alt="Foto"/>
+							</div>
+						</div>';
+	}
 }
 ?>
 
@@ -32,11 +59,11 @@ if($auth->checkRedirectCode())
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />	
 	<title>Federaci&oacute;n de Estudiantes del Tecnol&oacute;gico de Monterrey</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="shortcut icon" href="/images/icon/favicon.ico">
+	<link rel="shortcut icon" href="images/icon/favicon.ico">
 
 	<!-- stylesheets -->
 	<link rel="stylesheet" type="text/css" href="css/compiled/theme.css">
@@ -217,60 +244,15 @@ if($auth->checkRedirectCode())
 						<div class="row">
 							<div class="col-md-12 tabs-wrapper">
 								<ul class="nav nav-tabs">
-									<li class="active"><a  class="editable" href="#home" data-toggle="tab">Qui&eacute;nes somos</a></li>
-									<!--<li><a href="#profile" data-toggle="tab">Get ready in half the time</a></li>
-									<li><a href="#messages" data-toggle="tab">Collaborate with everyone</a></li>
-									<li><a href="#settings" data-toggle="tab">Get more done faster</a></li>-->
+									<?php
+										echo $tabs_head;
+									?>
 								</ul>
 
 								<div class="tab-content">
-									<div class="tab-pane fade in active" id="home">
-										<div class="col-md-6 info">
-											<h4 class ="editable">¡Bienvenidos!</h4>
-											<p class="editable">
-												Somos el &oacute;rgano estudiantil que representa a los estudiantes del Tecnol&oacute;gico de Monterrey, Campus Monterrey.
-											</p>
-										</div>
-										<div class="col-md-6 image">
-											<img src="images/feitesm/quienessomos.jpg" class="img-responsive editable" alt="pic1" />
-										</div>
-									</div>
-									<!--<div class="tab-pane fade" id="profile">
-										<div class="col-md-6 image">
-											<img src="images/portfolioitem1.png" class="img-responsive" alt="pic2" />
-										</div>
-										<div class="col-md-6 info">
-											<h4>You don't need to have any advanced technical</h4>
-											<p>
-												Whether you want to fill this paragraph with some text like I'm doing right now, this place is perfect to describe some features or anything you want - React has a complete solution for you.
-											</p>
-										</div>							
-									</div>
-									<div class="tab-pane fade" id="messages">
-										<div class="col-md-6 info">
-											<h4>You don't need to have any advanced technical</h4>
-											<p>
-												Whether you want to fill this paragraph with some text like I'm doing right now, this place is perfect to describe some features or anything you want - React has a complete solution for you.
-											</p>
-											<p>
-												You have complete control over the look & feel of your website, we offer the best quality so you take your site up and running in no time.
-											</p>
-										</div>
-										<div class="col-md-6 image">
-											<img src="images/tabs/pic2.png" class="img-responsive" style="position: relative;top: 15px;" alt="pic3" />
-										</div>
-									</div>
-									<div class="tab-pane fade" id="settings">
-										<div class="col-md-6 image">
-											<img src="images/tabs/pic1.png" class="img-responsive" alt="pic4" />
-										</div>
-										<div class="col-md-6 info">
-											<h4>You don't need to have any advanced technical</h4>
-											<p>
-												Whether you want to fill this paragraph with some text like I'm doing right now, this place is perfect to describe some features or anything you want - React has a complete solution for you.
-											</p>
-										</div>
-									</div>-->
+									<?php
+										echo $tabs_content;
+									?>
 								</div>
 							</div>
 						</div>

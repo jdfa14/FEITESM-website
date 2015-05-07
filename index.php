@@ -89,7 +89,7 @@ if($auth->isLoggedIn())
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />	
-	<title>Federación de Estudiantes del Tecnol&oacute;gico de Monterrey</title>
+	<title>Federación de Estudiantes del Tecnológico de Monterrey</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="shortcut icon" href="images/icon/favicon.ico">
 
@@ -154,7 +154,6 @@ if($auth->isLoggedIn())
 										</p>
 									</div>
 									<div class="col-sm-6 hidden-xs mobiles">
-										<!-- <img src="images/static-hero.png" class="animated fadeInLeft" alt="devices" /> -->
 										<img src="images/banner/front1.jpg" class="animated fadeInLeft img-responsive" alt="devices" />
 									</div>
 								</div>
@@ -198,22 +197,7 @@ if($auth->isLoggedIn())
 										<img src="images/banner/front3.jpg" class="animated fadeInLeft img-responsive" alt="devices" />
 									</div>
 								</div>
-								<!--<h1 class="hero-text animated fadeInLeft">
-									LOVE FEST
-								</h1>
-								<p class="sub-text animated fadeInLeft">
-									What do you love?
-								</p>
-								<div class="cta animated fadeInRight">
-									<a href="features.html" class="button-outline">See the tour</a>
-									<a href="signup.html" class="button">Sign up free</a>
-								</div>-->
 							</div>
-						</div>
-					</div>
-
-					<div class="video-modal">
-						<div class="wrap" id="wrap-for-video">
 						</div>
 					</div>
 				</div>
@@ -240,6 +224,15 @@ if($auth->isLoggedIn())
 								</div>
 							</div>
 						</div>
+					</div>
+				</div>
+
+				<div class="boxText container">
+					<div class="row header">
+						<h3>Eventos</h3>
+					</div>
+					<div style="text-align: center">
+						<iframe src="https://www.google.com/calendar/embed?src=feitesm.website%40gmail.com&	ctz=America/Mexico_City" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 					</div>
 				</div>
 

@@ -13,7 +13,7 @@ class Database
 		$server = 'localhost';
 		$user = 'root';
 		$password = '';
-		$databaseName = 'feitesm-website-db';
+		$databaseName = 'feitesm_website_db';
 
 		$this->mysqli = new mysqli($server,$user,$password,$databaseName);
 		mysqli_set_charset($this->mysqli,"utf8");

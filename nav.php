@@ -19,6 +19,9 @@
 	<a href="contactus.html" class="item">
 		Contacto
 	</a>
+	<?php if($auth->isLoggedIn()): ?>
+	<a href="logout.php">Cerrar Sesion</a>
+	<?php endif; ?>
 
 	<div class="social">
 		<a href="http://www.twitter.com/feitesm_mty">

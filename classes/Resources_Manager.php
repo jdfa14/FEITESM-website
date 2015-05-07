@@ -49,7 +49,7 @@ class Resources_Manager
 	public function getNextTabID(){
 		$what = "AUTO_INCREMENT";
 		$from = "INFORMATION_SCHEMA.TABLES";
-		$where = "TABLE_SCHEMA = 'feitesm-website-db'
+		$where = "TABLE_SCHEMA = 'feitesm_website_db'
 			AND   TABLE_NAME   = 'informacion'";
 		return $this->db->select($what,$from,$where)->fetch_assoc()["AUTO_INCREMENT"];
 	}
@@ -57,7 +57,7 @@ class Resources_Manager
 	public function getNextID($table){
 		$what = "AUTO_INCREMENT";
 		$from = "INFORMATION_SCHEMA.TABLES";
-		$where = "TABLE_SCHEMA = 'feitesm-website-db'
+		$where = "TABLE_SCHEMA = 'feitesm_website_db'
 			AND   TABLE_NAME   = '{$table}'";
 		return $this->db->select($what,$from,$where)->fetch_assoc()["AUTO_INCREMENT"];
 	}

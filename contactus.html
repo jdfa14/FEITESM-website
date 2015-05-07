@@ -15,6 +15,7 @@
 	<script src="js/bootstrap/bootstrap.min.js"></script>
 	<script src="js/vendor/jquery.validate.min.js"></script>
 	<script src="js/theme.js"></script>
+	<script src="validateEmailFields.js"></script>
 
 	<!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -106,7 +107,7 @@
 					<p>
 						Puedes enviarnos un mensaje respecto a cualquier tema. <br/> Nos pondremos en contacto contigo tan pronto sea posible.
 					</p>
-					<form role="form" id="contact-form" method="post">
+					<form role="form" id="contact-form" method="post" action="secure_email_code.php">
 						<div class="form-group">
 				    		<label for="name">Nombre</label>
 				    		<input type="text" name="name" class="form-control" id="name" />
@@ -116,8 +117,8 @@
 				    		<input type="email" name="email" class="form-control" id="email" />
 				  		</div>
 				  		<div class="form-group">
-				    		<label for="phone">Tel&eacute;fono</label>
-				    		<input type="text" name="phone" class="form-control" id="phone" />
+				    		<label for="subject">Asunto</label>
+				    		<input type="text" name="subject" class="form-control" id="subject" />
 				  		</div>
 				  		<div class="form-group">
 				    		<label for="message">Tu mensaje</label>

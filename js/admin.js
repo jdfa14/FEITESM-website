@@ -196,6 +196,8 @@ function createTab(id_tab, tab_name, titulo, contenido, img_url,contacto,redes){
 	var p = $("<p></p>");
 	var img = $("<img/>")
 
+	h4.addClass("titulo");
+	p.addClass("contenido");
 	info_div.addClass("col-md-6 info");
 	img_div.addClass("col-md-6 img");
 

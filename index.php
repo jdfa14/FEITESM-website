@@ -125,8 +125,9 @@ if($auth->isLoggedIn())
 
 		<div class="st-pusher">
 			<div class="st-content">
-
-				<?php include (__ROOT__.'/header.php'); ?>
+				<header class="navbar navbar-inverse hero" role="banner">
+					<?php include (__ROOT__.'/header.php'); ?>
+				</header>
 
 				<div id="hero">
 					<!-- Botones de navegacion manual -->

@@ -26,7 +26,9 @@ $auth = new Google_Auth($db,$googleClient);
 </head>
 
 <body id="signup">
-	<?php include('header.php'); ?>
+	<header class="navbar navbar-inverse normal" role="banner">
+		<?php include('header.php'); ?>
+	</header>
 	<div class="container">
 		<div class="row header">
 			<div class="col-md-12">

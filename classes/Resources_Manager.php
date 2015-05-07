@@ -11,7 +11,8 @@ class Resources_Manager
 		$what = "id_org";
 		$from = "organizacion";
 		$where = "nombre = '{$orgName}'";
-		return $this->db->select($what,$from,$where)->fetch_assoc()["id_org"];
+		$return = $this->db->select($what,$from,$where)->fetch_assoc();
+		return $return["id_org"];
 	}
 
 	public function getTabsInfo($orgName)
@@ -51,7 +52,8 @@ class Resources_Manager
 		$from = "INFORMATION_SCHEMA.TABLES";
 		$where = "TABLE_SCHEMA = 'feitesm_website_db'
 			AND   TABLE_NAME   = 'informacion'";
-		return $this->db->select($what,$from,$where)->fetch_assoc()["AUTO_INCREMENT"];
+		$return = $this->db->select($what,$from,$where)->fetch_assoc();
+		return $return["AUTO_INCREMENT"];
 	}
 
 	public function getNextID($table){
@@ -59,7 +61,8 @@ class Resources_Manager
 		$from = "INFORMATION_SCHEMA.TABLES";
 		$where = "TABLE_SCHEMA = 'feitesm_website_db'
 			AND   TABLE_NAME   = '{$table}'";
-		return $this->db->select($what,$from,$where)->fetch_assoc()["AUTO_INCREMENT"];
+		$return = $this->db->select($what,$from,$where)->fetch_assoc();
+		return $return["AUTO_INCREMENT"];
 	}
 
 	public function getStaffInfo($orgName)

@@ -55,8 +55,8 @@ class Google_Auth
 
 	protected function getPayLoad()
 	{
-		$payLoad = $this->client->verifyIdToken()->getAttributes()['payload'];
-		return $payLoad;
+		$payLoad = $this->client->verifyIdToken()->getAttributes();
+		return $payLoad['payload'];
 	}
 
 	protected function storeUser($payLoad)

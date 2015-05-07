@@ -227,12 +227,14 @@ if($auth->isLoggedIn())
 					</div>
 				</div>
 
-				<div class="boxText container">
-					<div class="row header">
-						<h3>Eventos</h3>
-					</div>
-					<div style="text-align: center">
-						<iframe src="https://www.google.com/calendar/embed?src=feitesm.website%40gmail.com&	ctz=America/Mexico_City" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+				<div id="grid-first">
+					<div class="container">
+						<div class="row header">
+							<h3>Eventos</h3>
+						</div>
+						<div style="text-align: center">
+							<iframe src="https://www.google.com/calendar/embed?src=feitesm.website%40gmail.com&	ctz=America/Mexico_City" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+						</div>
 					</div>
 				</div>
 

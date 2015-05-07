@@ -22,18 +22,28 @@ $tabs_content = "";
 if($tabsInfo->num_rows > 0)
 {
 	while($row = $tabsInfo->fetch_assoc()){
-		$tabs_head .='<li> <a class="editable" href="' .'#Tab-'. $row["id_inf"] . '" data-toggle="tab">'.$row["tabla_titulo"].'</a></li>';
-		$tabs_content .= '<div class="tab-pane fade in" id="Tab-'.$row["id_inf"].'">
-							<div class="col-md-6 info">
-								<h4 class ="editable">'.$row["titulo"].'</h4>
-								<p class="editable">
-									'.$row["contenido"].'
-								</p>
-							</div>
-							<div class="col-md-6 image">
-								<img src="'.$row["img_url"].'" class="img-responsive editable" alt="Foto"/>
-							</div>
-						</div>';
+		$tabs_head .='<li> <a class="tab_element" href="' .'#Tab-'. $row["id_inf"] . '" data-toggle="tab">'.$row["tabla_titulo"].'</a></li>';
+		if($row['contacto'] == 1){
+
+		}else if($row['redes'] == 1){
+
+		}else {
+			$tabs_content .= 	'<div class="tab-pane fade in" id="Tab-'.$row["id_inf"].'">
+									<div hidden>
+										<p class="contacto">0</p>
+										<p class="redes">0</p>
+									</div>
+									<div class="col-md-6 info">
+										<h4 class ="titulo">'.$row["titulo"].'</h4>
+										<p class="contenido">'
+											.$row["contenido"].
+										'</p>
+									</div>
+									<div class="col-md-6 image">
+										<img src="'.$row["img_url"].'" class="img-responsive " alt="Foto"/>
+									</div>
+								</div>';
+		}
 	}
 }
 
@@ -69,7 +79,7 @@ if($auth->isLoggedIn())
 					<strong>Agregar</strong><br>Cargo</div>	
 			</div>
 		</div>';
-	$tabs_head .='<li> <button class="btn btn-large btn-primary" onclick="addNewTab()"><i class="fa fa-plus-circle fa-lg fa-align-center"></i> Nueva Pestaña</button></li>';
+	$tabs_head .='<li id="newTabButton"> <button class="btn btn-large btn-primary" onclick="agregarTab()"><i class="fa fa-plus-circle fa-lg fa-align-center"></i> Nueva Pestaña</button></li>';
 }
 
 ?>
@@ -142,12 +152,6 @@ if($auth->isLoggedIn())
 										<p>
 											"La fiesta internacional de las culturas" 
 										</p>
-										<div class="cta">
-											<a href="features.html" class="button-outline">
-												TRY IT FREE
-												<i class="fa fa-chevron-right"></i>
-											</a>
-										</div>
 									</div>
 									<div class="col-sm-6 hidden-xs mobiles">
 										<!-- <img src="images/static-hero.png" class="animated fadeInLeft" alt="devices" /> -->
@@ -245,105 +249,6 @@ if($auth->isLoggedIn())
 							<h3>Nuestro equipo</h3>
 						</div>
 						<div class="row sections">
-							<!--<div class="col-md-3">
-								<div class="section">
-									<div class="pic">
-										<img src="images/feitesm/equipo/PRESIDENTE.png" class="img-responsive" alt="services1"/>
-										<strong>Rolando Andr&eacute;s Ram&iacute;rez</strong><br>
-										Presidente
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="section">
-									<div class="pic">
-										<img src="images/feitesm/equipo/VICEPRESIDENTE.png" class="img-responsive" alt="services1"/>
-										<strong>Mayra Gabriela Garc&iacute;a</strong><br>
-										Vicepresidente
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="section">
-									<div class="pic">
-										<img src="images/feitesm/equipo/SECRETARIA.png" class="img-responsive" alt="services1"/>
-										<strong>Rigoberto G&oacute;mez</strong><br>
-										Secretar&iacute;a General
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="section">
-									<div class="pic">
-										<img src="images/feitesm/equipo/PLANEACION.png" class="img-responsive" alt="services1"/>
-										<strong>Perla Caballero</strong><br>
-										Director de Planeaci&oacute;n
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="section">
-									<div class="pic">
-										<img src="images/feitesm/equipo/FINANZAS.png" class="img-responsive" alt="services1"/>
-										<strong>Nancy Bautista</strong><br>
-										Director de Finanzas
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="section">
-									<div class="pic">
-										<img src="images/feitesm/equipo/COMUNICACION.png" class="img-responsive" alt="services1"/>
-										<strong>Estefan&iacute;a Leal</strong><br>
-										Director de Comunicaci&oacute;n e Imagen
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="section">
-									<div class="pic">
-										<img src="images/feitesm/equipo/CAM.png" class="img-responsive" alt="services1"/>
-										<strong>Ceci Fern&aacute;ndez</strong><br>
-										Director Consejo de Acciones por M&eacute;xico
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="section">
-									<div class="pic">
-										<img src="images/feitesm/equipo/CARE.png" class="img-responsive" alt="services1"/>
-										<strong>Martha Alejandra Paredes</strong><br>
-										Director Consejo de Asociaciones Regionales y Extranjeras
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="section">
-									<div class="pic">
-										<img src="images/feitesm/equipo/CCE.png" class="img-responsive" alt="services1"/>
-										<strong>Rafa V&eacute;lez</strong><br>
-										Director Consejo de Comunidades y Cap&iacute;tulos Estudiantiles
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="section">
-									<div class="pic">
-										<img src="images/feitesm/equipo/CEF.png" class="img-responsive" alt="services1"/>
-										<strong>Lore Flores</strong><br>
-										Director Consejo Estudiantil de Filantrop&iacute;a
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="section">
-									<div class="pic">
-										<img src="images/feitesm/equipo/CSA.png" class="img-responsive" alt="services1"/>
-										<strong>Melissa Moya</strong><br>
-										Director Consejo de Sociedades de Alumnos
-									</div>
-								</div>
-							</div>-->
 							<?php echo $staff ?>
 						</div>
 					</div>

@@ -74,4 +74,8 @@ class Database
 		";
 		return $this->query($sql);
 	}
+
+	public function getError(){
+		return $this->mysqli->error;
+	}
 }

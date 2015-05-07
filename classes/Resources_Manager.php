@@ -23,22 +23,29 @@ class Resources_Manager
 		return $this->db->select($what,$from,$where);
 	}
 
-	public function addTab($orgName)
+	public function addTab($orgName,$tabla_titulo,$titulo,$contenido,$img_url,$contacto,$redes)
 	{
 		$id_org = $this->getOrgID($orgName);
 		$into = "informacion";
-		$fields = "id_org";
-		$values = "'{$id_org}'";
+		$fields = "id_org,tabla_titulo,titulo,contenido,img_url,contacto,redes";
+		$values = "'{$id_org}','{$tabla_titulo}','{$titulo}','{$contenido}','{$img_url}','{$contacto}','{$redes}'";
 		return $this->db->insert($into,$fields,$values);
 	}
 
-	public function removeTab($id_tab)
+	public function removeTab($id_inf)
 	{
 		$from = "informacion";
-		$where = "id_inf = '{$id_tab}'";
+		$where = "id_inf = '{$id_inf}'";
 		return $this->db->delete($from,$where);
 	}
 
+	public function actualizaInformacion($tabla_titulo,$titulo,$contenido,$img_url,$contacto,$redes,$id_inf)
+	{
+		$from = "informacion";
+		$values = "tabla_titulo = '{$tabla_titulo}', titulo = '{$titulo}', contenido = '{$contenido}' , img_url = '{$img_url}', contacto = {$contacto} , redes = {$redes}";
+		$where = "id_inf = '{$id_inf}'";
+		return $this->db->update($from,$values,$where);
+	}
 	public function getNextTabID(){
 		$what = "AUTO_INCREMENT";
 		$from = "INFORMATION_SCHEMA.TABLES";
@@ -78,12 +85,15 @@ class Resources_Manager
 		return $this->db->delete($from,$where);
 	}
 
-	public function actualizaIntegrante($orgName,$nombres,$apellido_p,$apellido_m,$cargo,$img_url,$id_int){
-		$id_org = $this->getOrgID($orgName);
+	public function actualizaIntegrante($nombres,$apellido_p,$apellido_m,$cargo,$img_url,$id_int){
 		$from = "integrantes";
-		$values = "id_org = {$id_org}, nombres = '{$nombres}', apellido_p = '{$apellido_p}', apellido_m = '{$apellido_m}', cargo = '{$cargo}', img_url = '{$img_url}'";
+		$values = "nombres = '{$nombres}', apellido_p = '{$apellido_p}', apellido_m = '{$apellido_m}', cargo = '{$cargo}', img_url = '{$img_url}'";
 		$where = "id_int = '{$id_int}'";
 		return $this->db->update($from,$values,$where);
+	}
+
+	public function getDBError(){
+		return $this->db->getError();
 	}
 }
 

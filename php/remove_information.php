@@ -1,17 +1,17 @@
 <?php
 	require_once '../app/init.php';
 
-	$tab_id = $_POST['tab_id'];
+	$id_inf = $_POST['id_inf'];
 	
 	$db = new Database;
 	$auth = new Google_Auth($db,new Google_Client());
 	$rm = new Resources_Manager($db);
 
 	if($auth->isLoggedIn()){
-		if($rm->removeTab($tab_id)){
-			echo '{ "success" : true }';
+		if($rm->removeTab($id_inf)){
+			echo json_encode(array('success' => true),JSON_FORCE_OBJECT);
 		}else{
-			echo '{ "success" : false }';
+			echo json_encode(array('success' => false),JSON_FORCE_OBJECT);
 		}
 	}
 ?>

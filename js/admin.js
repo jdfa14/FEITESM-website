@@ -1,22 +1,10 @@
 $(document).ready(function (){
-	var controls = $(".editable");
-	var tabs_wrapper = $(".tabs-wrapper");
-	var tabs = $(".nav-tabs li");
+	var tabs = $("#tabs .nav-tabs li");
 	var staff = $(".staff");
 
-	controls.each(function(){
-		addEditButton($(this));
-	});
-	
-	tabs.each(function(){
-		addDeleteButton($(this));
-	});
-
-	tabs_wrapper.each(function(){
-		addPlusOneButton($(this));
-	});
-
 	staff.dblclick(editableStaff);
+	tabs.find("a").dblclick(editarTab);
+	tabs.addClass("boxy");
 });
 
 
@@ -62,40 +50,6 @@ function addDeleteButton(tab_li){
 	// ubicacion del divButon
 	button.css("right" , button.height()/4);
 	button.css("top" , -2*button.height());
-}
-
-//Add button for tabs, to add a new tab
-function addPlusOneButton(tabs_wrapper){
-	var div = $("<div></div>");
-	var button = createEditButton("btn-info", "fa-plus-circle","");
-
-	div.addClass("editDiv");
-	div.append(button);
-
-	button.click(function(){
-		$(this).attr('id','findMe');
-		$.ajax({
-			type : 'POST',
-			url : 'php/add_information.php',
-			data : {
-				'org_Name' : readCookie('orgName')
-			},
-			success : function(msg){
-				var success = jQuery.parseJSON(msg);
-				if(success['success']){
-					createTab($('#findMe').parent(),success['tab_id']);
-				}else{
-					bootbox.alert("Error, conexion con base de datos fallida");
-				}
-				//alert('wow' + msg);
-				$(this).attr('id','');
-			}
-		});
-		
-	});
-
-	tabs_wrapper.prepend(button);
-	button.css("left" , "-50px");
 }
 
 //Standar Button to edit fields on the page
@@ -219,24 +173,23 @@ function createEditButton(button_kind, icon_name,text){
 }
 
 //create a full tab
-function createTab(inHere, id_tab, tab_name, titulo, contenido, img_url){
-	var tab_ul = inHere.find(".nav-tabs");
-	var content = inHere.find(".tab-content");
-
+function createTab(id_tab, tab_name, titulo, contenido, img_url,contacto,redes){
+	var obj = $("<div></div>");
 	var new_li = $("<li></li>");
 	var a = $("<a></a>");
-	a.addClass("newEdit");
-	a.attr("href","#Tab-"+id);
+	a.attr("href","#Tab-"+id_tab);
 	a.attr("data-toggle","tab");
-	a.html("Nueva Tabla");
+	a.html(tab_name);
 	new_li.append(a);
-	
-	tab_ul.append(new_li);
+	new_li.addClass("boxy");
+	a.dblclick(editarTab);
+	obj.append(new_li);
 
 	var pane = $("<div></div>");
-	pane.addClass("tab-pane");
-	pane.attr("id","Tab-"+id);
+	pane.addClass("tab-pane fade in");
+	pane.attr("id","Tab-"+ id_tab);
 
+	var hiddenDiv = $("<div hidden></div>");
 	var info_div = $("<div></div>");
 	var img_div = $("<div></div>");
 	var h4 = $("<h4></h4>");
@@ -246,27 +199,28 @@ function createTab(inHere, id_tab, tab_name, titulo, contenido, img_url){
 	info_div.addClass("col-md-6 info");
 	img_div.addClass("col-md-6 img");
 
-	h4.addClass("newEdit");
-	p.addClass("newEdit");
-	img.addClass("newEdit img-responsive");
+	img.addClass("img-responsive");
 
-	h4.text("Titulo");
-	p.text("Contenido");
+	h4.text(titulo);
+	p.text(contenido);
+	img.attr("src",img_url);
 
-	
-
-	img.attr("src","images\\default.jpg");
 	img.attr("alt","Foto");
+
+	hiddenDiv.append($('<p class="contacto">'+contacto+'</p>'));
+	hiddenDiv.append($('<p class="redes">'+redes+'</p>'));
 
 	info_div.append(h4);
 	info_div.append(p);
 
 	img_div.append(img);
 
+	pane.append(hiddenDiv);
 	pane.append(info_div);
 	pane.append(img_div);
 
-	content.append(pane);
+	obj.append(pane);
+	return obj;
 }
 
 //cookies
@@ -298,39 +252,96 @@ function writeCookie(name,value,days) {
 }
 
 
+function checkThis(){
+	var selectedVal = $("#radio_btns input:radio:checked").val();
+	var titulo = $("#titulo").parent().parent();
+	var contenido = $("#contenido").parent().parent();
+	var img_url = $("#img_url").parent().parent();
+	var img = $("#img_preview").parent();
+
+	if( 1 == selectedVal){ // info
+		titulo.removeAttr("hidden");
+		contenido.removeAttr("hidden");
+		img_url.removeAttr("hidden");
+		img.removeAttr("hidden");
+
+		$("#titulo").attr("required","");
+		$("#contenido").attr("required","");
+	}else {// conctact or social network
+		titulo.attr("hidden","");
+		contenido.attr("hidden","");
+		img_url.attr("hidden","");
+		img.attr("hidden","");
+
+		$("#titulo").removeAttr("required");
+		$("#contenido").removeAttr("required");
+	}
+}
+
 //tabs admin habdlers
-function addNewTab(){
+function agregarTab(){
 	bootbox.dialog({
 		size : "large",
 		title : "Agregar una nueva Tab",
 		message : 
-			'<form class="form-horizontal" onsubmit="return false;">' +
-				'<div class="form-group">' +
-					'<label class="col-md-4 control-label" for="titulo">Titulo de pestaña</label>' +
-					'<div class="col-md-8">' +
-						'<input id="name" name="tab-name" type="text" placeholder="¿Quienes somos?" class="form-control input-md" required="">' +
-					'</div>' +
-				'</div>' +
-				'<div class="form-group">' +
-					'<label class="col-md-4 control-label" for="titulo">Título</label>' +
-					'<div class="col-md-8">' +
-						'<input id="titulo" name="titulo" type="text" placeholder="¡Somos HTML!" class="form-control input-md" required="">' +
-					'</div>' +
-				'</div>' +
-				'<div class="form-group">' +
-					'<label class="col-md-4 control-label" for="contenido">Contenido</label>' +
-					'<div class="col-md-8">' +
-						'<input id="contenido" name="contenido" type="text" placeholder="Somos una organización dedicada a..." class="form-control input-md" required="">' +
-					'</div>' +
-				'</div>' +
-				'<div class="form-group">' +
-					'<label class="col-md-4 control-label" for="img_url">URL de imagen</label>' +
-					'<div class="col-md-4">' +
-						'<input id="img_url" name="img_url" type="text" placeholder="images/default.jpg" class="form-control input-md">' +
-					'</div>' +
-					'<img id="img_preview" class="col-md-4" src="images/default.jpg" alt="preview" onError="this.src=\'images/default.jpg\'; "/>' +
-				'</div>' +
-			'</form>',
+			'<div class="row">' +
+				'<div class="col-md-12"> ' +
+					'<form class="form-horizontal" onsubmit="return false;">' +
+						'<div class="form-group">' +
+							'<label class="col-md-4 control-label" for="titulo">Titulo de pestaña</label>' +
+							'<div class="col-md-8">' +
+								'<input id="tab_name" name="tab_name" type="text" placeholder="¿Quienes somos?" class="form-control input-md" required="">' +
+							'</div>' +
+						'</div>' +
+						'<div class="form-group" id="radio_btns">' +
+							'<label class="col-md-4 control-label" for="radios">Tipo de Pestaña</label>' +
+							'<div class="col-md-4">' +
+								'<div class="radio">' +
+									'<label for="radios-0">' +
+									'<input type="radio" name="radios" id="radios-0" value="1" checked="checked" onchange="checkThis()">' +
+									'Información' +
+									'</label>' +
+								'</div>' +
+								'<div class="radio">' +
+									'<label for="radios-1">' +
+									'<input type="radio" name="radios" id="radios-1" value="2" onchange="checkThis()">' +
+									'Contacto' +
+									'</label>' +
+								'</div>' +
+								'<div class="radio">' +
+									'<label for="radios-2">' +
+									'<input type="radio" name="radios" id="radios-2" value="3" onchange="checkThis()">' +
+									'Redes Sociales' +
+									'</label>' +
+								'</div>' +
+							'</div>' +
+						'</div>' +
+
+						'<div class="form-group">' +
+							'<label class="col-md-4 control-label" for="titulo">Título</label>' +
+							'<div class="col-md-8">' +
+								'<input id="titulo" name="titulo" type="text" placeholder="¡Somos HTML!" class="form-control input-md" required="">' +
+							'</div>' +
+						'</div>' +
+						'<div class="form-group">' +
+							'<label class="col-md-4 control-label" for="contenido">Contenido</label>' +
+							'<div class="col-md-8">' +
+								'<textarea id="contenido" name="contenido" type="text" placeholder="Somos una organización dedicada a..." class="form-control input-md" required=""></textarea>' +
+							'</div>' +
+						'</div>' +
+						'<div class="form-group">' +
+							'<label class="col-md-4 control-label" for="img_url">URL de imagen</label>' +
+							'<div class="col-md-4">' +
+								'<input id="img_url" name="img_url" type="text" placeholder="images/default.jpg" class="form-control input-md" onblur="imgPreview()">' +
+							'</div>' +
+							'<img id="img_preview" class="col-md-4" src="images/default.jpg" alt="preview" onError="this.src=\'images/default.jpg\'; "/>' +
+						'</div>' +
+						'<div class="form-group"> ' +
+							'<input type="submit" hidden>' +
+						'</div> ' +
+					'</form>' +
+				'</div> ' +
+			'</div> ',
 		buttons : {
 			cancel : {
 				label : "Cancelar",
@@ -344,19 +355,275 @@ function addNewTab(){
 				label : "Guardar",
 				className : "btn-success",
 				callback : function(){
-					var tab_name = $("#tab-name").val();
+					var myForm = $('.form-horizontal')
+					if (!myForm[0].checkValidity()) {
+						myForm.find(':submit').click()
+						return false;
+					}
+					var selectedVal = $("#radio_btns input:radio:checked").val();
+					var tab_name = $("#tab_name").val();
 					var titulo = $("#titulo").val();
 					var contenido = $("#contenido").val();
 					var img_url = $("#img_preview").attr("src");
+					var contacto = 0;
+					var redes = 0;
 
-					createTab($("#tabs .tabs-wrapper"),"random");
+					if(2 == selectedVal){// contact
+						contacto = 1;
+						titulo = "";
+						contenido = "";
+						img_url = "";
+					}else if(3 == selectedVal){//redes
+						redes = 1;
+						titulo = "";
+						contenido = "";
+						img_url = "";
+					}
+
+					$.ajax({
+						type : 'POST',
+						url : 'php/add_information.php',
+						data : {
+							'org_Name' : readCookie('orgName'),
+							'tab_name' : tab_name,
+							'titulo' : titulo,
+							'contenido' : contenido,
+							'img_url' : img_url,
+							'contacto' : contacto,
+							'redes' : redes
+						},
+						success : function(msg){
+
+							var jsonObj = jQuery.parseJSON(msg);
+							if(jsonObj['success']){
+								addTabOnDocument(jsonObj['id_inf'],jsonObj['tab_name'],jsonObj['titulo'],jsonObj['contenido'],jsonObj['img_url'],jsonObj['contacto'],jsonObj['redes']);
+							}else{
+								bootbox.alert("Error, conexion con base de datos fallida");
+							}
+							//alert('wow' + msg);
+							$(this).attr('id','');
+						}
+					});
 				}
 			}
 		}
 	});
 }
 
+function addTabOnDocument(id_inf,tab_name,titulo,contenido,img_url, contacto,redes){
+	var obj = createTab(id_inf,tab_name,titulo,contenido,img_url,contacto,redes);
+	var tab_ul = $("#tabs .tabs-wrapper").find(".nav-tabs");
+	var content = $("#tabs .tabs-wrapper").find(".tab-content");
+	content.append(obj.find("li").next())
+	tab_ul.append(obj.find("li"));
+	tab_ul.append($("#newTabButton"));
+}
+function editTabOnDocument(id_inf,tab_name,titulo,contenido,img_url,contacto,redes){
+	var obj = createTab(id_inf,tab_name,titulo,contenido,img_url,contacto,redes);
+	var li = obj.find("li");
+	var pane = obj.find("li").next();
+	li.addClass("active");
+	pane.addClass("in active");
+	$($("#editandoTab").find("a").attr("href")).replaceWith(pane);
+	$("#editandoTab").replaceWith(li);
+}
 
+function removeTabOnDocument(id_inf){
+	$.ajax({
+		type : 'POST',
+		url : 'php/remove_information.php',
+		data : {
+			'id_inf' : id_inf
+		},
+		success : function(msg){
+			var jsonObj = jQuery.parseJSON(msg);
+			if(jsonObj['success']){
+				$("#Tab-" + id_inf).remove();
+				$("#editandoTab").remove();
+				//activando la priera tab en caso de que haya
+				$("#tabs .tabs-wrapper .nav-tabs li").first().addClass("active");
+				$("#tabs .tabs-wrapper .tab-content .tab-pane").first().addClass("in active");
+			}else{
+				bootbox.alert("Error, conexion con base de datos fallida");
+			}
+		}
+	});
+
+}
+
+// edit Tab
+
+function editarTab(){
+	$(this).parent().attr("id","editandoTab");
+	var id_inf = $(this).attr("href").substring(5);
+	var tab_name = $(this).text();
+	var pane = $($(this).attr("href"));
+	var contacto = pane.find(".contacto").text();
+	var redes = pane.find(".redes").text();
+	var titulo = pane.find(".titulo").text();
+	var contenido = pane.find(".contenido").text();
+	var img_url = pane.find("img").attr("src");
+
+	var classesForInputs = {
+		'inputs' : '',
+		'divs' : ''
+	};
+	var radios = {
+		'radio1' : '',
+		'radio2' : '',
+		'radio3' : ''
+	};
+
+	if(contacto == 1){
+		classesForInputs['divs'] = "hidden";
+		radios['radio2'] = 'checked="checked"';
+	}else if(redes == 1){
+		classesForInputs['divs'] = "hidden";
+		radios['radio3'] = 'checked="checked"';
+	}else {
+		classesForInputs['inputs'] = 'required=""';
+		radios['radio1'] = 'checked="checked"';
+	}
+	$(this).attr("id","editandoStaff");
+
+	bootbox.dialog({
+		size : "large",
+		title : "Editar Tab",
+		closeButton : false,
+		message : 
+			'<div class="row">' +
+				'<div class="col-md-12"> ' +
+					'<form class="form-horizontal" onsubmit="return false;">' +
+						'<input id="id_inf" type="hidden" value="'+id_inf+'"> ' +
+						'<div class="form-group">' +
+							'<label class="col-md-4 control-label" for="titulo">Titulo de pestaña</label>' +
+							'<div class="col-md-8">' +
+								'<input id="tab_name" name="tab_name" type="text" placeholder="¿Quienes somos?" class="form-control input-md" required="" value="'+tab_name+'" >' +
+							'</div>' +
+						'</div>' +
+						'<div class="form-group" id="radio_btns">' +
+							'<label class="col-md-4 control-label" for="radios">Tipo de Pestaña</label>' +
+							'<div class="col-md-4">' +
+								'<div class="radio">' +
+									'<label for="radios-0">' +
+									'<input type="radio" name="radios" id="radios-0" value="1" '+radios['radio1']+' onchange="checkThis()">' +
+									'Información' +
+									'</label>' +
+								'</div>' +
+								'<div class="radio">' +
+									'<label for="radios-1">' +
+									'<input type="radio" name="radios" id="radios-1" value="2" '+radios['radio2']+' onchange="checkThis()">' +
+									'Contacto' +
+									'</label>' +
+								'</div>' +
+								'<div class="radio">' +
+									'<label for="radios-2">' +
+									'<input type="radio" name="radios" id="radios-2" value="3" '+radios['radio3']+' onchange="checkThis()">' +
+									'Redes Sociales' +
+									'</label>' +
+								'</div>' +
+							'</div>' +
+						'</div>' +
+
+						'<div class="form-group" '+classesForInputs['divs']+' >' +
+							'<label class="col-md-4 control-label" for="titulo">Título</label>' +
+							'<div class="col-md-8">' +
+								'<input id="titulo" name="titulo" type="text" placeholder="¡Somos HTML!" class="form-control input-md" '+classesForInputs['inputs']+' value="'+titulo+'" >' +
+							'</div>' +
+						'</div>' +
+						'<div class="form-group" '+classesForInputs['divs']+' >' +
+							'<label class="col-md-4 control-label" for="contenido">Contenido</label>' +
+							'<div class="col-md-8">' +
+								'<textarea id="contenido" name="contenido" type="text" placeholder="Somos una organización dedicada a..." class="form-control input-md" '+classesForInputs['inputs']+' >'+contenido+'</textarea>' +
+							'</div>' +
+						'</div>' +
+						'<div class="form-group" '+classesForInputs['divs']+' >' +
+							'<label class="col-md-4 control-label" for="img_url">URL de imagen</label>' +
+							'<div class="col-md-4">' +
+								'<input id="img_url" name="img_url" type="text" placeholder="images/default.jpg" class="form-control input-md" onblur="imgPreview()" value="'+img_url+'" >' +
+							'</div>' +
+							'<img id="img_preview" class="col-md-4" src="'+img_url+'" alt="preview" onError="this.src=\'images/default.jpg\'; "/>' +
+						'</div>' +
+						'<div class="form-group"> ' +
+							'<input type="submit" hidden>' +
+						'</div> ' +
+					'</form>' +
+				'</div> ' +
+			'</div> ',
+		buttons : {
+			eliminar : {
+				label : "Eliminar Tab",
+				className : "btn-warning",
+				callback : function(){
+					var id_inf = $("#id_inf").val();
+					removeTabOnDocument(id_inf);
+				}
+			},
+			cancel : {
+				label : "Cancelar",
+				className : "btn-danger",
+				callback : function(){
+					$("#editandoTab").removeAttr("id");
+				}
+			},
+			guardar : {
+				label : "Guardar",
+				className : "btn-success",
+				callback : function(){
+					var myForm = $('.form-horizontal')
+					if (!myForm[0].checkValidity()) {
+						myForm.find(':submit').click()
+						return false;
+					}
+					var selectedVal = $("#radio_btns input:radio:checked").val();
+					var id_inf = $("#id_inf").val();
+					var tab_name = $("#tab_name").val();
+					var titulo = $("#titulo").val();
+					var contenido = $("#contenido").val();
+					var img_url = $("#img_preview").attr("src");
+					var contacto = 0;
+					var redes = 0;
+
+					if(2 == selectedVal){// contact
+						contacto = 1;
+						titulo = "";
+						contenido = "";
+						img_url = "";
+					}else if(3 == selectedVal){//redes
+						redes = 1;
+						titulo = "";
+						contenido = "";
+						img_url = "";
+					}
+					
+					$.ajax({
+						type : 'POST',
+						url : 'php/actualiza_informacion.php',
+						data : {
+							'id_inf' : id_inf,
+							'tab_name' : tab_name,
+							'titulo' : titulo,
+							'contenido' : contenido,
+							'img_url' : img_url,
+							'contacto' : contacto,
+							'redes' : redes
+						},
+						success : function(msg){
+
+							var jsonObj = jQuery.parseJSON(msg);
+							if(jsonObj['success']){
+								editTabOnDocument(jsonObj['id_inf'],jsonObj['tab_name'],jsonObj['titulo'],jsonObj['contenido'],jsonObj['img_url'],jsonObj['contacto'],jsonObj['redes']);
+							}else{
+								bootbox.alert("Error con la base de datos: " + jsonObj['message']);
+							}
+							$(this).attr('id','');
+						}
+					});
+				}
+			}
+		}
+	});
+}
 
 //staff admin handler
 
@@ -494,6 +761,7 @@ function editableStaff(){
 	bootbox.dialog({
 		size : "large",
 		title : "Editar miembro",
+		closeButton : false,
 		message : 
 			'<div class="row"> ' +
 				'<div class="col-md-12"> ' +
@@ -542,13 +810,6 @@ function editableStaff(){
 				'</div> ' +
 			'</div>',
 		buttons : {
-			cancel : {
-				label : "Cancelar",
-				className : "btn-danger",
-				callback : function(){
-					$("#editandoStaff").removeAttr("id");
-				}
-			},
 			eliminar : {
 				label : "Eliminar miembro",
 				className : "btn-warning",
@@ -557,6 +818,13 @@ function editableStaff(){
 					removeStaffOnDocument(id_int);
 				}
 			},	
+			cancel : {
+				label : "Cancelar",
+				className : "btn-danger",
+				callback : function(){
+					$("#editandoStaff").removeAttr("id");
+				}
+			},
 			guardar : {
 				label : "Guardar",
 				className : "btn-success",
@@ -580,7 +848,6 @@ function editableStaff(){
 }
 
 //Staff database
-
 function addStaffOnDocument(nombres, apellido_p, apellido_m, cargo, img_url,inHere){
 	//ajax Stuff
 	$.ajax({
@@ -614,7 +881,6 @@ function updateStaffOnDocument(nombres, apellido_p,apellido_m,cargo,img_url,id_i
 		url : 'php/actualiza_integrante.php',
 		data : {
 			'id_int' : id_int,
-			'name_org' : readCookie('orgName'),
 			'nombres' : nombres,
 			'apellido_p' : apellido_p,
 			'apellido_m' : apellido_m,

@@ -8,6 +8,40 @@ $client = new Resources_Manager(new Database);
 $orgName = "cam";
 setcookie('orgName', $orgName, time() + 24 * 60 * 60);
 
+$staffInfo = $client->getStaffInfo($orgName);
+$staff = "";
+if($tabsInfo->num_rows > 0)
+{
+	while($row = $staffInfo->fetch_assoc()){
+		$staff .= '
+			<div class="col-md-3 staff">
+				<div class="section" id="'.$row["id_int"].'">
+					<div class="pic">
+						<img src="'.$row["img_url"].'" class="img-responsive" alt="Integrante"/>
+						<strong class="nombres">' .$row["nombres"]		 .'</strong>
+						<strong class="apellido_p">' .$row["apellido_p"].'</strong>
+						<strong class="apellido_m">' .$row["apellido_m"].'</strong><br>
+						<span>'.$row["cargo"].'</span>
+					</div>
+				</div>
+			</div>
+		';
+	}
+}
+
+if($auth->isLoggedIn())
+{
+	$staff .= '
+		<div class="col-md-3" id="newStaffMember">
+			<div class="section">
+				<div class="pic">
+					<a href="javascript:void(0);" onclick="addStaff();"><img src="images/personas/add.png" class="img-responsive" alt="Integrante"> </a>
+					<strong>Agregar</strong><br>Cargo</div>	
+			</div>
+		</div>';
+	$tabs_head .='<li id="newTabButton"> <button class="btn btn-large btn-primary" onclick="agregarTab()"><i class="fa fa-plus-circle fa-lg fa-align-center"></i> Nueva Pestaña</button></li>';
+}
+
 ?>
 
 <!DOCTYPE html>

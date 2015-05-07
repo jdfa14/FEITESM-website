@@ -24,8 +24,8 @@ class Google_Auth
 
 	public function isLoggedIn()
 	{
-		return true;
-		//return isset($_SESSION['access_token']);
+		
+		return isset($_SESSION['access_token']);
 	}
 
 	public function getAuthUrl()

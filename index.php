@@ -24,9 +24,40 @@ if($tabsInfo->num_rows > 0)
 	while($row = $tabsInfo->fetch_assoc()){
 		$tabs_head .='<li> <a class="tab_element" href="' .'#Tab-'. $row["id_inf"] . '" data-toggle="tab">'.$row["tabla_titulo"].'</a></li>';
 		if($row['contacto'] == 1){
-
+			$tabs_content .= 	'<div class="tab-pane fade in" id="Tab-'.$row["id_inf"].'">
+										<div hidden>
+											<p class="contacto">1</p>
+											<p class="redes">0</p>
+										</div>
+			  							<div class="col-md-12 message">
+											<div id="contact-us">
+												<div id="info-contact">
+													<form role="form" id="contact-form" method="post" novalidate="novalidate">
+													<div class="form-group">
+														<label for="name">Nombre</label>
+														<input type="text" name="name" class="form-control" id="name">
+													</div>
+													<div class="form-group">
+														<label for="email">Correo electrónico</label>
+														<input type="email" name="email" class="form-control" id="email">
+													</div>
+													<div class="form-group">
+														<label for="phone">Teléfono</label>
+														<input type="text" name="phone" class="form-control" id="phone">
+													</div>
+													<div class="form-group">
+														<label for="message">Tu mensaje</label>
+														<textarea name="message" class="form-control" id="message" rows="6"></textarea>
+													</div>
+													<div class="submit">
+														<input type="submit" class="button button-small" value="Enviar">
+													</div>
+												</form>
+											</div>
+										</div>
+		  							</div>
+		  						</div>';
 		}else if($row['redes'] == 1){
-
 		}else {
 			$tabs_content .= 	'<div class="tab-pane fade in" id="Tab-'.$row["id_inf"].'">
 									<div hidden>
@@ -106,6 +137,7 @@ if($auth->isLoggedIn())
 	<script src="js/vendor/jquery.flexslider.min.js"></script>
 	<script src="js/vendor/bootbox.min.js"></script>
 	<script src="js/theme.js"></script>
+	<script src="js/vendor/jquery.validate.min.js"></script>
 	<?php if($auth->isLoggedIn()) echo '<script src="js/admin.js"></script>'; ?>
 </head>
 

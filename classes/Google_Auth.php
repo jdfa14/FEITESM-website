@@ -15,12 +15,17 @@ class Google_Auth
 			$this->client->setClientSecret('ghQd-jZS6UdTQE1qnWKufgUF');
 			$this->client->setRedirectUri('http://localhost/feitesm-website/index.php');
 			$this->client->setScopes('email');
+			//if already logged in
+			if(isset($_SESSION['access_token']) && $_SESSION['access_token']) {
+				$this->client->setAccessToken($_SESSION['access_token']);
+			}
 		}
 	}
 
 	public function isLoggedIn()
 	{
-		return isset($_SESSION['access_token']);
+		return true;
+		//return isset($_SESSION['access_token']);
 	}
 
 	public function getAuthUrl()
@@ -34,7 +39,6 @@ class Google_Auth
 		{
 			$this->client->authenticate($_GET['code']);
 
-			//CAMBIAR
 			$this->setToken($this->client->getAccessToken()); // we set the token
 			$this->login($this->getPayLoad()); // we try to login on system
 			return true;

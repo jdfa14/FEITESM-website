@@ -26,15 +26,6 @@ li a .editDiv button{
 	height: 34px;
 }
 
-.editable{
-	background: #f5f5f5;
-	box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.45), inset 0px 0px 1px 1px white;
-	margin: auto;
-	padding: 1px;
-	min-width: 100%;
-	min-height: 20px;
-}
-
 .boxy{
 	box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.45), inset 0px 0px 1px 1px white;
 }
@@ -43,3 +34,10 @@ p , h1, h2, h3, h4, h5
 {
 	min-height: 10px;
 }
+
+#tabs .tabs-wrapper .tab-content .tab-pane .info h4, #tabs .tabs-wrapper .tab-content .tab-pane .info p, #tabs .tabs-wrapper .tab-content .tab-pane .info img {
+	margin: auto;
+	padding: 1px;
+	min-width: 100%;
+	min-height: 20px;
+} 

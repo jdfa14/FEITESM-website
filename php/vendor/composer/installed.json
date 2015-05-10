@@ -1,0 +1,99 @@
+[
+    {
+        "name": "google/apiclient",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/google/google-api-php-client.git",
+            "reference": "1db3e929502e1fba4f74c929e4b4986a538a159c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/google/google-api-php-client/zipball/1db3e929502e1fba4f74c929e4b4986a538a159c",
+            "reference": "1db3e929502e1fba4f74c929e4b4986a538a159c",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.2.1"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "3.7.*"
+        },
+        "time": "2015-04-25 12:46:03",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.1.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "description": "Client library for Google APIs",
+        "homepage": "http://developers.google.com/api-client-library/php",
+        "keywords": [
+            "google"
+        ]
+    },
+    {
+        "name": "asimlqt/php-google-spreadsheet-client",
+        "version": "2.3.4",
+        "version_normalized": "2.3.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/asimlqt/php-google-spreadsheet-client.git",
+            "reference": "8b8ee721227d7424a073c38e226c385094872c77"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/asimlqt/php-google-spreadsheet-client/zipball/8b8ee721227d7424a073c38e226c385094872c77",
+            "reference": "8b8ee721227d7424a073c38e226c385094872c77",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "4.4.2"
+        },
+        "time": "2015-04-12 16:17:12",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Google\\": "src/Google"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "Asim Liaquat",
+                "email": "asimlqt22@gmail.com",
+                "role": "Developer"
+            },
+            {
+                "name": "Martin Czygan",
+                "email": "martin.czygan@gmail.com",
+                "homepage": "http://twitter.com/cvvfj",
+                "role": "Packager"
+            }
+        ],
+        "description": "Google Spreadsheet PHP Client",
+        "homepage": "https://github.com/asimlqt/php-google-spreadsheet-client",
+        "keywords": [
+            "google",
+            "spreadsheet"
+        ]
+    }
+]

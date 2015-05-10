@@ -475,10 +475,11 @@ function editarTab(){
 		'radio2' : '',
 		'radio3' : ''
 	};
-
+	var imgHid = "";
 	if(contacto == 1){
 		classesForInputs['divs'] = "hidden";
 		radios['radio2'] = 'checked="checked"';
+		imgHid = " hidden";
 	}else if(redes == 1){
 		classesForInputs['divs'] = "hidden";
 		radios['radio3'] = 'checked="checked"';
@@ -539,7 +540,7 @@ function editarTab(){
 								'<textarea id="contenido" name="contenido" type="text" placeholder="Somos una organización dedicada a..." class="form-control input-md" '+classesForInputs['inputs']+' >'+contenido+'</textarea>' +
 							'</div>' +
 						'</div>' +
-						'<div class="form-group" '+classesForInputs['divs']+' >' +
+						'<div class="form-group"'+imgHid+'>' +
 							'<label class="col-md-4 control-label" for="img_url">URL de imagen</label>' +
 							'<div class="col-md-4">' +
 								'<input id="img_url" name="img_url" type="text" placeholder="/feitesm-website/images/default.jpg" class="form-control input-md" onblur="imgPreview()" value="'+img_url+'" >' +

@@ -6,112 +6,15 @@ $db = new Database;
 $googleClient = new Google_Client();
 $auth = new Google_Auth($db,$googleClient);
 $client = new Resources_Manager(new Database);
-$orgName = "feitesm";
-setcookie('orgName', $orgName, time() + 24 * 60 * 60);
+$orgSign = "feitesm";
+setcookie('orgSign', $orgSign, time() + 24 * 60 * 60);
+$thisOrg = $client->getOrgInfo($orgSign);
 
 if($auth->checkRedirectCode())
 {
 	header('Location index.php');
 }
-//echo $client->getOrgID($orgName);
-
-// Datos para tabs
-$tabsInfo = $client->getTabsInfo($orgName);
-$tabs_head = "";
-$tabs_content = "";
-if($tabsInfo->num_rows > 0)
-{
-	while($row = $tabsInfo->fetch_assoc()){
-		$tabs_head .='<li> <a class="tab_element" href="' .'#Tab-'. $row["id_inf"] . '" data-toggle="tab">'.$row["tabla_titulo"].'</a></li>';
-		if($row['contacto'] == 1){
-			$tabs_content .= 	'<div class="tab-pane fade in" id="Tab-'.$row["id_inf"].'">
-										<div hidden>
-											<p class="contacto">1</p>
-											<p class="redes">0</p>
-										</div>
-			  							<div class="col-md-12 message">
-											<div id="contact-us">
-												<div id="info-contact">
-													<form role="form" id="contact-form" method="post" novalidate="novalidate">
-													<div class="form-group">
-														<label for="name">Nombre</label>
-														<input type="text" name="name" class="form-control" id="name">
-													</div>
-													<div class="form-group">
-														<label for="email">Correo electrónico</label>
-														<input type="email" name="email" class="form-control" id="email">
-													</div>
-													<div class="form-group">
-														<label for="phone">Teléfono</label>
-														<input type="text" name="phone" class="form-control" id="phone">
-													</div>
-													<div class="form-group">
-														<label for="message">Tu mensaje</label>
-														<textarea name="message" class="form-control" id="message" rows="6"></textarea>
-													</div>
-													<div class="submit">
-														<input type="submit" class="button button-small" value="Enviar">
-													</div>
-												</form>
-											</div>
-										</div>
-		  							</div>
-		  						</div>';
-		}else if($row['redes'] == 1){
-		}else {
-			$tabs_content .= 	'<div class="tab-pane fade in" id="Tab-'.$row["id_inf"].'">
-									<div hidden>
-										<p class="contacto">0</p>
-										<p class="redes">0</p>
-									</div>
-									<div class="col-md-6 info">
-										<h4 class ="titulo">'.$row["titulo"].'</h4>
-										<p class="contenido">'
-											.$row["contenido"].
-										'</p>
-									</div>
-									<div class="col-md-6 image">
-										<img src="'.$row["img_url"].'" class="img-responsive " alt="Foto"/>
-									</div>
-								</div>';
-		}
-	}
-}
-
-//Datos para las imagenes de los integrantes
-$staffInfo = $client->getStaffInfo($orgName);
-$staff = "";
-if($tabsInfo->num_rows > 0)
-{
-	while($row = $staffInfo->fetch_assoc()){
-		$staff .= '
-			<div class="col-md-3 staff">
-				<div class="section" id="'.$row["id_int"].'">
-					<div class="pic">
-						<img src="'.$row["img_url"].'" class="img-responsive" alt="Integrante"/>
-						<strong class="nombres">' .$row["nombres"]		 .'</strong>
-						<strong class="apellido_p">' .$row["apellido_p"].'</strong>
-						<strong class="apellido_m">' .$row["apellido_m"].'</strong><br>
-						<span>'.$row["cargo"].'</span>
-					</div>
-				</div>
-			</div>
-		';
-	}
-}
-
-if($auth->isLoggedIn())
-{
-	$staff .= '
-		<div class="col-md-3" id="newStaffMember">
-			<div class="section">
-				<div class="pic">
-					<a href="javascript:void(0);" onclick="addStaff();"><img src="images/personas/add.png" class="img-responsive" alt="Integrante"> </a>
-					<strong>Agregar</strong><br>Cargo</div>	
-			</div>
-		</div>';
-	$tabs_head .='<li id="newTabButton"> <button class="btn btn-large btn-primary" onclick="agregarTab()"><i class="fa fa-plus-circle fa-lg fa-align-center"></i> Nueva Pestaña</button></li>';
-}
+//echo $client->getOrgID($orgSign);
 
 ?>
 
@@ -122,7 +25,7 @@ if($auth->isLoggedIn())
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />	
 	<title>Federación de Estudiantes del Tecnológico de Monterrey</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="shortcut icon" href="images/icon/favicon.ico">
+	<link rel="shortcut icon" href="/images/icon/favicon.ico">
 
 	<!-- stylesheets -->
 	<link rel="stylesheet" type="text/css" href="css/compiled/theme.css">
@@ -237,26 +140,119 @@ if($auth->isLoggedIn())
 				<div id="tabs">
 					<div class="container">
 						<div class="row header">
-							<div class="col-md-12">
-								<h3>FEITESM</h3>
-								<p>Federaci&oacute;n de Estudiantes del Tecnol&oacute;gico de Monterrey, Campus Monterrey.</p>
-							</div>
+							<h2><?= $thisOrg['nombre'] ?></h2>
 						</div>
+						<?php
+							$tabsInfo = $client->getTabsInfo($orgSign);
+							if($tabsInfo->num_rows > 0 || $auth->isLoggedIn()) :
+						?>
 						<div class="row">
 							<div class="col-md-12 tabs-wrapper">
 								<ul class="nav nav-tabs">
 									<?php
-										echo $tabs_head;
+										while($row = $tabsInfo->fetch_assoc()):
 									?>
+
+									<li>
+										<a class="tab_element" href="#Tab-<?=$row["id_inf"]?>" data-toggle="tab"> <?=$row["tabla_titulo"]?></a>
+									</li>
+
+									<?php
+										endwhile;
+										if($auth->isLoggedIn()):
+									?>
+									<li id="newTabButton">
+											<button class="btn btn-large btn-primary" onclick="agregarTab()">
+												<i class="fa fa-plus-circle fa-lg fa-align-center"></i>
+												Nueva Pestaña
+											</button>
+										</li>
+									<?php endif; ?>
 								</ul>
 
 								<div class="tab-content">
 									<?php
-										echo $tabs_content;
+										$tabsInfo = $client->getTabsInfo($orgSign);
+										while($row = $tabsInfo->fetch_assoc()):
+											if($row['contacto'] == 1):
+									?>
+									<div class="tab-pane fade" id="Tab-<?=$row["id_inf"]?>">
+										<div class="col-md-12 message">
+											<div id="contact-us">
+												<div id="info-contact">
+													<form role="form" id="contact-form" method="post" action="../secure_email_code.php">
+														<div hidden>
+															<p class="contacto">1</p>
+															<p class="redes">0</p>
+														</div>
+														<div class="form-group">
+															<label for="name">Nombre</label>
+															<input type="text" name="name" class="form-control" id="name" />
+															<input type="hidden" name= "to" id="to" value="<?= $thisOrg['email_contacto']?>"/>
+															<input type="hidden" name= "pathRedireccion" id="to" value="<?=__FILE__?>"/>
+														</div>
+														<div class="form-group">
+															<label for="email">Correo electr&oacute;nico</label>
+															<input type="email" name="email" class="form-control" id="email" />
+														</div>
+														<div class="form-group">
+															<label for="subject">Asunto</label>
+															<input type="text" name="subject" class="form-control" id="subject" />
+														</div>
+														<div class="form-group">
+															<label for="message">Tu mensaje</label>
+															<textarea name="message" class="form-control" id="message" rows="6"></textarea>
+														</div>
+														<div class="submit">
+															<input type="submit" class="button button-small" value="Enviar" />
+														</div>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+									<?php elseif($row['redes'] == 1):?>
+									<div class="tab-pane fade in" id="Tab-<?=$row["id_inf"]?>">
+										<div hidden>
+											<p class="contacto">0</p>
+											<p class="redes">1</p>
+										</div>
+										<div class="col-md-6 info">
+											<h4>Redes sociales</h4>
+											<p><span>Facebook:</span>
+											<a href="<?= $thisOrg['facebook'] ?>" target="_blank">
+												ConsejoSA
+											</a></p>
+											<p><span>Twitter:</span>
+											<a href="<?= $thisOrg['twitter'] ?>" target="_blank">
+												csa_mty
+											</a></p>
+										</div>
+										<div class="col-md-6 image">
+											<img src="<?= $thisOrg['logo_url'] ?>" class="img-responsive" style="position: relative;top: 15px;" alt="picture3" />
+										</div>
+									</div>
+									<?php else: ?>
+									<div class="tab-pane fade in" id="Tab-<?=$row["id_inf"]?>">
+										<div hidden>
+											<p class="contacto">0</p>
+											<p class="redes">0</p>
+										</div>
+										<div class="col-md-6 info">
+											<h4 class ="titulo"><?=$row["titulo"]?></h4>
+											<p class="contenido"><?=$row["contenido"]?></p>
+										</div>
+										<div class="col-md-6 image">
+											<img src="<?=$row["img_url"]?>" class="img-responsive " alt="Foto" >
+										</div>
+									</div>
+									<?php 
+										endif; endwhile;
 									?>
 								</div>
 							</div>
 						</div>
+						<?php endif; ?>
 					</div>
 				</div>
 
@@ -271,16 +267,54 @@ if($auth->isLoggedIn())
 					</div>
 				</div>
 
-				<div id="grid-first">
+				<?php 
+					$staffInfo = $client->getStaffInfo($orgSign);
+					if($staffInfo->num_rows > 0 || $auth->isLoggedIn()):
+						$cont = 0;
+				?>
+		  		<div class="container boxText">
+		  			<div class="row header">
+		  				<h3>Nuestro Equipo</h3>
+		  			</div>
+
 					<div class="container">
-						<div class="row header">
-							<h3>Nuestro equipo</h3>
-						</div>
-						<div class="row sections">
-							<?php echo $staff ?>
+						<div class="row team">
+							<?php 
+								while($row = $staffInfo->fetch_assoc()):
+							?>
+							<div class="col-md-3 staff">
+								<div class="section" id="<?=$row["id_int"]?>">
+									<div class="pic">
+										<img src="<?=$row["img_url"]?>" class="img-responsive" alt="Integrante"/>
+										<strong class="nombres"><?=$row["nombres"]?></strong>
+										<strong class="apellido_p"><?=$row["apellido_p"]?></strong>
+										<strong class="apellido_m"><?=$row["apellido_m"]?></strong><br>
+										<span><?=$row["cargo"]?></span>
+									</div>
+								</div>
+							</div>
+							<?php 
+									
+								$cont = ($cont + 1) % 4;
+								endwhile;
+								if($auth->isLoggedIn()):
+							?>
+							<div class="col-md-3 staff" id="newStaffMember">
+								<div class="section">
+									<div class="pic">
+										<a href="javascript:void(0);" onclick="addStaff();"><img src="images/personas/add.png" class="img-responsive" alt="Integrante"> </a>
+										<strong>Agregar</strong><br>Cargo</div>	
+								</div>
+							</div>
+							
+							<?php 
+								endif;
+							?>
 						</div>
 					</div>
 				</div>
+				<?php endif ?>
+
 				<?php include (__ROOT__.'\footer.php') ?>
 
 			</div><!-- end .st-content -->

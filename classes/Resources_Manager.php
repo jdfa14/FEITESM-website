@@ -6,27 +6,27 @@ class Resources_Manager
 		$this->db = $db;
 	}
 
-	public function getOrgID($orgName)
+	public function getOrgID($orgSign)
 	{
 		$what = "id_org";
 		$from = "organizacion";
-		$where = "nombre = '{$orgName}'";
+		$where = "siglas = '{$orgSign}'";
 		$return = $this->db->select($what,$from,$where)->fetch_assoc();
 		return $return["id_org"];
 	}
 
-	public function getTabsInfo($orgName)
+	public function getTabsInfo($orgSign)
 	{
-		$id_org = $this->getOrgID($orgName);
+		$id_org = $this->getOrgID($orgSign);
 		$what = "*";
 		$from = "informacion";
 		$where = "id_org = '{$id_org}'";
 		return $this->db->select($what,$from,$where);
 	}
 
-	public function addTab($orgName,$tabla_titulo,$titulo,$contenido,$img_url,$contacto,$redes)
+	public function addTab($orgSign,$tabla_titulo,$titulo,$contenido,$img_url,$contacto,$redes)
 	{
-		$id_org = $this->getOrgID($orgName);
+		$id_org = $this->getOrgID($orgSign);
 		$into = "informacion";
 		$fields = "id_org,tabla_titulo,titulo,contenido,img_url,contacto,redes";
 		$values = "'{$id_org}','{$tabla_titulo}','{$titulo}','{$contenido}','{$img_url}','{$contacto}','{$redes}'";
@@ -65,17 +65,17 @@ class Resources_Manager
 		return $return["AUTO_INCREMENT"];
 	}
 
-	public function getStaffInfo($orgName)
+	public function getStaffInfo($orgSign)
 	{
-		$id_org = $this->getOrgID($orgName);
+		$id_org = $this->getOrgID($orgSign);
 		$what = "*";
 		$from = "integrantes";
 		$where = "id_org = '{$id_org}'";
 		return $this->db->select($what,$from,$where);
 	}
 
-	public function agregaIntegrante($orgName,$nombres,$apellido_p,$apellido_m,$cargo,$img_url){
-		$id_org = $this->getOrgID($orgName);
+	public function agregaIntegrante($orgSign,$nombres,$apellido_p,$apellido_m,$cargo,$img_url){
+		$id_org = $this->getOrgID($orgSign);
 		$into = "integrantes";
 		$fields = "id_org,nombres,apellido_p,apellido_m,cargo,img_url";
 		$values = "{$id_org},'{$nombres}','{$apellido_p}', '{$apellido_m}','{$cargo}','{$img_url}'";
@@ -98,6 +98,27 @@ class Resources_Manager
 	public function getDBError(){
 		return $this->db->getError();
 	}
+
+
+	//ORGANIZACIONES
+	public function getOrgInfo($orgSign){
+		$id_org = $this->getOrgID($orgSign);
+		$what = "*";
+		$from = "organizacion";
+		$where = "id_org = '{$id_org}'";
+		return $this->db->select($what,$from,$where)->fetch_assoc();
+	}
+
+	public function getOrgChilds($orgSign){
+		$id_org = $this->getOrgID($orgSign);
+		$what = "*";
+		$from = "organizacion";
+		$where = "id_org_padre = '{$id_org}'";
+		return $this->db->select($what,$from,$where);
+	}
+
+
+
 }
 
 ?>

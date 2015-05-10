@@ -1,22 +1,27 @@
+
 <nav class="nav-menu">
 	<h3>Consejos</h3>
 	
-	<a href="/feitesm-website/CAM/cam.php" class="item">
+	<a href="/index.php" class="item">
+		FEITESM
+	</a>
+
+	<a href="/CAM/CAM.php" class="item">
 		Consejo de Acciones por México (CAM)
 	</a>
-	<a href="/feitesm-website/CARE/care.php" class="item">
+	<a href="/CARE/care.php" class="item">
 		Consejo de Asociaciones Regionales y Extranjeras (CARE)
 	</a>
-	<a href="/feitesm-website/CCE/CCE.php" class="item">
+	<a href="/CCE/CCE.php" class="item">
 		Consejo de Comunidades Estudiantiles (CCE)
 	</a>
-	<a href="/feitesm-website/CEF/CEF.php" class="item">
+	<a href="/CEF/CEF.php" class="item">
 		Consejo Estudiantil de Filantrop&iacute;a (CEF)
 	</a>
-	<a href="/feitesm-website/CSA/CSA.php" class="item">
+	<a href="/CSA/CSA.php" class="item">
 		Consejo de Sociedades de Alumnos (CSA)
 	</a>
-	<a href="/feitesm-website/contactus.html" class="item">
+	<a href="/contactus.php" class="item">
 		Contacto
 	</a>
 	<?php if($auth->isLoggedIn()): ?>

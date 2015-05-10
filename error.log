@@ -1,0 +1,54 @@
+[Tue May 05 13:11:08.819924 2015] [mpm_prefork:notice] [pid 18669] AH00169: caught SIGTERM, shutting down
+[Sat May 09 21:48:40.008484 2015] [mpm_prefork:notice] [pid 975] AH00163: Apache/2.4.7 (Ubuntu) PHP/5.5.9-1ubuntu4.9 configured -- resuming normal operations
+[Sat May 09 21:48:40.015238 2015] [core:notice] [pid 975] AH00094: Command line: '/usr/sbin/apache2'
+[Sat May 09 23:51:43.301874 2015] [:error] [pid 982] [client 189.235.206.245:58812] script '/var/www/html/info.php' not found or unable to stat
+[Sat May 09 23:52:43.853461 2015] [mpm_prefork:notice] [pid 975] AH00169: caught SIGTERM, shutting down
+[Sat May 09 23:52:44.929804 2015] [mpm_prefork:notice] [pid 2001] AH00163: Apache/2.4.7 (Ubuntu) PHP/5.5.9-1ubuntu4.9 configured -- resuming normal operations
+[Sat May 09 23:52:44.929918 2015] [core:notice] [pid 2001] AH00094: Command line: '/usr/sbin/apache2'
+[Sat May 09 23:56:51.053409 2015] [mpm_prefork:notice] [pid 2001] AH00169: caught SIGTERM, shutting down
+[Sat May 09 23:56:52.064717 2015] [mpm_prefork:notice] [pid 2132] AH00163: Apache/2.4.7 (Ubuntu) PHP/5.5.9-1ubuntu4.9 configured -- resuming normal operations
+[Sat May 09 23:56:52.064794 2015] [core:notice] [pid 2132] AH00094: Command line: '/usr/sbin/apache2'
+[Sun May 10 00:14:44.821621 2015] [mpm_prefork:notice] [pid 2132] AH00169: caught SIGTERM, shutting down
+[Sun May 10 00:14:45.925398 2015] [mpm_prefork:notice] [pid 2284] AH00163: Apache/2.4.7 (Ubuntu) PHP/5.5.9-1ubuntu4.9 configured -- resuming normal operations
+[Sun May 10 00:14:45.925540 2015] [core:notice] [pid 2284] AH00094: Command line: '/usr/sbin/apache2'
+[Sun May 10 00:36:03.219435 2015] [mpm_prefork:notice] [pid 2284] AH00169: caught SIGTERM, shutting down
+[Sun May 10 00:36:45.480474 2015] [mpm_prefork:notice] [pid 2457] AH00163: Apache/2.4.7 (Ubuntu) PHP/5.5.9-1ubuntu4.9 configured -- resuming normal operations
+[Sun May 10 00:36:45.480589 2015] [core:notice] [pid 2457] AH00094: Command line: '/usr/sbin/apache2'
+[Sun May 10 00:38:09.960621 2015] [:error] [pid 2463] [client 189.235.206.245:62796] script '/var/www/html/index.php' not found or unable to stat
+[Sun May 10 00:39:05.455592 2015] [:error] [pid 2461] [client 189.235.206.245:62875] script '/var/www/html/info.php' not found or unable to stat
+[Sun May 10 00:39:56.447503 2015] [:error] [pid 2464] [client 189.235.206.245:62934] PHP Warning:  require_once(app/init.php): failed to open stream: No such file or directory in /var/www/html/index.php on line 3
+[Sun May 10 00:39:56.447595 2015] [:error] [pid 2464] [client 189.235.206.245:62934] PHP Fatal error:  require_once(): Failed opening required 'app/init.php' (include_path='.:/usr/share/php:/usr/share/pear') in /var/www/html/index.php on line 3
+[Sun May 10 00:40:00.990978 2015] [:error] [pid 2465] [client 189.235.206.245:62954] PHP Warning:  require_once(app/init.php): failed to open stream: No such file or directory in /var/www/html/index.php on line 3
+[Sun May 10 00:40:00.991110 2015] [:error] [pid 2465] [client 189.235.206.245:62954] PHP Fatal error:  require_once(): Failed opening required 'app/init.php' (include_path='.:/usr/share/php:/usr/share/pear') in /var/www/html/index.php on line 3
+[Sun May 10 00:40:43.737675 2015] [:error] [pid 2470] [client 157.55.39.198:46672] PHP Warning:  require_once(app/init.php): failed to open stream: No such file or directory in /var/www/html/index.php on line 3
+[Sun May 10 00:40:43.737863 2015] [:error] [pid 2470] [client 157.55.39.198:46672] PHP Fatal error:  require_once(): Failed opening required 'app/init.php' (include_path='.:/usr/share/php:/usr/share/pear') in /var/www/html/index.php on line 3
+[Sun May 10 01:06:39.714075 2015] [:error] [pid 2464] [client 189.235.206.245:65265] PHP Warning:  mysqli::mysqli(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /var/www/html/classes/Database.php on line 18
+[Sun May 10 01:06:39.714180 2015] [:error] [pid 2464] [client 189.235.206.245:65265] PHP Warning:  mysqli_set_charset(): Couldn't fetch mysqli in /var/www/html/classes/Database.php on line 19
+[Sun May 10 01:06:39.719734 2015] [:error] [pid 2464] [client 189.235.206.245:65265] PHP Warning:  mysqli::mysqli(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /var/www/html/classes/Database.php on line 18
+[Sun May 10 01:06:39.719804 2015] [:error] [pid 2464] [client 189.235.206.245:65265] PHP Warning:  mysqli_set_charset(): Couldn't fetch mysqli in /var/www/html/classes/Database.php on line 19
+[Sun May 10 01:06:39.719943 2015] [:error] [pid 2464] [client 189.235.206.245:65265] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /var/www/html/classes/Database.php on line 25
+[Sun May 10 01:06:39.719970 2015] [:error] [pid 2464] [client 189.235.206.245:65265] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /var/www/html/classes/Resources_Manager.php on line 14
+[Sun May 10 01:10:02.215575 2015] [:error] [pid 2587] [client 216.108.227.23:59282] PHP Warning:  mysqli::mysqli(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /var/www/html/classes/Database.php on line 18, referer: METACOMPO.COM
+[Sun May 10 01:10:02.215643 2015] [:error] [pid 2587] [client 216.108.227.23:59282] PHP Warning:  mysqli_set_charset(): Couldn't fetch mysqli in /var/www/html/classes/Database.php on line 19, referer: METACOMPO.COM
+[Sun May 10 01:10:02.216142 2015] [:error] [pid 2587] [client 216.108.227.23:59282] PHP Warning:  mysqli::mysqli(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /var/www/html/classes/Database.php on line 18, referer: METACOMPO.COM
+[Sun May 10 01:10:02.216166 2015] [:error] [pid 2587] [client 216.108.227.23:59282] PHP Warning:  mysqli_set_charset(): Couldn't fetch mysqli in /var/www/html/classes/Database.php on line 19, referer: METACOMPO.COM
+[Sun May 10 01:10:02.216245 2015] [:error] [pid 2587] [client 216.108.227.23:59282] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /var/www/html/classes/Database.php on line 25, referer: METACOMPO.COM
+[Sun May 10 01:10:02.216260 2015] [:error] [pid 2587] [client 216.108.227.23:59282] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /var/www/html/classes/Resources_Manager.php on line 14, referer: METACOMPO.COM
+[Sun May 10 01:10:02.392676 2015] [:error] [pid 2590] [client 216.108.227.23:58023] PHP Warning:  mysqli::mysqli(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /var/www/html/classes/Database.php on line 18, referer: METACOMPO.COM
+[Sun May 10 01:10:02.392766 2015] [:error] [pid 2590] [client 216.108.227.23:58023] PHP Warning:  mysqli_set_charset(): Couldn't fetch mysqli in /var/www/html/classes/Database.php on line 19, referer: METACOMPO.COM
+[Sun May 10 01:10:02.393260 2015] [:error] [pid 2590] [client 216.108.227.23:58023] PHP Warning:  mysqli::mysqli(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /var/www/html/classes/Database.php on line 18, referer: METACOMPO.COM
+[Sun May 10 01:10:02.393285 2015] [:error] [pid 2590] [client 216.108.227.23:58023] PHP Warning:  mysqli_set_charset(): Couldn't fetch mysqli in /var/www/html/classes/Database.php on line 19, referer: METACOMPO.COM
+[Sun May 10 01:10:02.393378 2015] [:error] [pid 2590] [client 216.108.227.23:58023] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /var/www/html/classes/Database.php on line 25, referer: METACOMPO.COM
+[Sun May 10 01:10:02.393397 2015] [:error] [pid 2590] [client 216.108.227.23:58023] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /var/www/html/classes/Resources_Manager.php on line 14, referer: METACOMPO.COM
+[Sun May 10 01:10:02.576285 2015] [:error] [pid 2593] [client 216.108.227.23:58382] PHP Warning:  mysqli::mysqli(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /var/www/html/classes/Database.php on line 18, referer: METACOMPO.COM
+[Sun May 10 01:10:02.576375 2015] [:error] [pid 2593] [client 216.108.227.23:58382] PHP Warning:  mysqli_set_charset(): Couldn't fetch mysqli in /var/www/html/classes/Database.php on line 19, referer: METACOMPO.COM
+[Sun May 10 01:10:02.576877 2015] [:error] [pid 2593] [client 216.108.227.23:58382] PHP Warning:  mysqli::mysqli(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /var/www/html/classes/Database.php on line 18, referer: METACOMPO.COM
+[Sun May 10 01:10:02.576900 2015] [:error] [pid 2593] [client 216.108.227.23:58382] PHP Warning:  mysqli_set_charset(): Couldn't fetch mysqli in /var/www/html/classes/Database.php on line 19, referer: METACOMPO.COM
+[Sun May 10 01:10:02.576988 2015] [:error] [pid 2593] [client 216.108.227.23:58382] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /var/www/html/classes/Database.php on line 25, referer: METACOMPO.COM
+[Sun May 10 01:10:02.577005 2015] [:error] [pid 2593] [client 216.108.227.23:58382] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /var/www/html/classes/Resources_Manager.php on line 14, referer: METACOMPO.COM
+[Sun May 10 01:10:02.744060 2015] [:error] [pid 2463] [client 216.108.227.23:58834] PHP Warning:  mysqli::mysqli(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /var/www/html/classes/Database.php on line 18, referer: METACOMPO.COM
+[Sun May 10 01:10:02.744133 2015] [:error] [pid 2463] [client 216.108.227.23:58834] PHP Warning:  mysqli_set_charset(): Couldn't fetch mysqli in /var/www/html/classes/Database.php on line 19, referer: METACOMPO.COM
+[Sun May 10 01:10:02.744560 2015] [:error] [pid 2463] [client 216.108.227.23:58834] PHP Warning:  mysqli::mysqli(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /var/www/html/classes/Database.php on line 18, referer: METACOMPO.COM
+[Sun May 10 01:10:02.744581 2015] [:error] [pid 2463] [client 216.108.227.23:58834] PHP Warning:  mysqli_set_charset(): Couldn't fetch mysqli in /var/www/html/classes/Database.php on line 19, referer: METACOMPO.COM
+[Sun May 10 01:10:02.744662 2015] [:error] [pid 2463] [client 216.108.227.23:58834] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /var/www/html/classes/Database.php on line 25, referer: METACOMPO.COM
+[Sun May 10 01:10:02.744678 2015] [:error] [pid 2463] [client 216.108.227.23:58834] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /var/www/html/classes/Resources_Manager.php on line 14, referer: METACOMPO.COM

@@ -21,7 +21,8 @@ class Database
 
 	public function query($sql)
 	{
-		return $this->mysqli->query($sql);
+		$sql2 = str_replace("\\","/",$sql);
+		return $this->mysqli->query($sql2);
 	}
 
 	public function checkIfNotEmpty($sql)

@@ -140,7 +140,8 @@ if($auth->checkRedirectCode())
 				<div id="tabs">
 					<div class="container">
 						<div class="row header">
-							<h2><?= $thisOrg['nombre'] ?></h2>
+							<h2><?= $thisOrg['siglas'] ?></h2>
+							<p><?= $thisOrg['nombre'] ?></p>
 						</div>
 						<?php
 							$tabsInfo = $client->getTabsInfo($orgSign);

@@ -186,32 +186,34 @@
 						<div id="info">
 							<div class="container">
 								<div class="row team">
-									<?php 
-										while($row = $staffInfo->fetch_assoc()):
-											if($cont == 0):
-									?>
 									<div class="col-md-12 team-row">
-									<?php	endif; ?>
+										<?php 
+											while($row = $staffInfo->fetch_assoc()):
+												if($cont == 0):
+										?>
+										<div class="col-md-12 team-row">
+										<?php	endif; ?>
 
-										<img rowN="<?=$cont?>" src="<?=$row['img_url']?>" data-toggle="tooltip" title="<?=$row['nombres']?> <?=$row['apellido_p']?> - <?=$row['cargo']?>" alt="<?=$row['cargo']?>"  />
-									<?php	if($cont == 0): ?>
-											</div>
-									<?php 
+											<img rowN="<?=$cont?>" src="<?=$row['img_url']?>" data-toggle="tooltip" title="<?=$row['nombres']?> <?=$row['apellido_p']?> - <?=$row['cargo']?>" alt="<?=$row['cargo']?>"  />
+										<?php	if($cont == 0): ?>
+												</div>
+										<?php 
+												endif;
+											$cont = ($cont + 1) % 4;
+											endwhile;
+											if($auth->isLoggedIn()):
+												if($cont == 0):
+										?>
+										<div class="col-md-12 team-row">
+										<?php	endif; ?>
+											<img rowN="<?=$cont?>" src="../images/personas/add.png" data-toggle="tooltip" title="Agrega nuevo integrante" alt="addNew"  />
+										<?php	if($cont == 0): ?>
+										</div>
+										<?php 
+												endif;
 											endif;
-										$cont = ($cont + 1) % 4;
-										endwhile;
-										if($auth->isLoggedIn()):
-											if($cont == 0):
-									?>
-									<div class="col-md-12 team-row">
-									<?php	endif; ?>
-										<img rowN="<?=$cont?>" src="../images/personas/add.png" data-toggle="tooltip" title="Agrega nuevo integrante" alt="addNew"  />
-									<?php	if($cont == 0): ?>
+										?>
 									</div>
-									<?php 
-											endif;
-										endif;
-									?>
 								</div>
 							</div>
 						</div>

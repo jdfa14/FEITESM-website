@@ -7,22 +7,22 @@
 			<div class="col-sm-6 menu">
 				<ul>
 					<li>
-					<a href="#">CAM</a>
+					<a href="/CAM/CAM.php">CAM</a>
 				</li>
 				<li>
-					<a href="../CARE/principalCARE.html">CARE</a>
+					<a href="/CARE/care.php">CARE</a>
 				</li>
 				<li>
-					<a href="../CCE/principalCCE.html">CCE</a>
+					<a href="/CCE/cce.php">CCE</a>
 				</li>
 				<li>
-					<a href="../CEF/principalCEF.html">CEF</a>
+					<a href="/CEF/cef.php">CEF</a>
 				</li>
 				<li>
-					<a href="../CSA/principalCSA.html">CSA</a>
+					<a href="/CSA/csa.php">CSA</a>
 				</li>
 				<li>
-					<a href="../contactus.html">Contacto</a>
+					<a href="/php/contactus.php">Contacto</a>
 				</li>
 				</ul>
 			</div>

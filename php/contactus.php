@@ -19,14 +19,14 @@ setcookie('orgName', $orgName, time() + 24 * 60 * 60);
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 	<!-- stylesheets -->
-	<link rel="stylesheet" type="text/css" href="css/compiled/theme.css">
-	<link rel="stylesheet" type="text/css" href="css/vendor/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="/css/compiled/theme.css">
+	<link rel="stylesheet" type="text/css" href="/css/vendor/font-awesome.css">
 
 	<!-- javascript -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script src="js/bootstrap/bootstrap.min.js"></script>
-	<script src="js/vendor/jquery.validate.min.js"></script>
-	<script src="js/theme.js"></script>
+	<script src="/js/bootstrap/bootstrap.min.js"></script>
+	<script src="/js/vendor/jquery.validate.min.js"></script>
+	<script src="/js/theme.js"></script>
 
 	<!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,12 +72,12 @@ setcookie('orgName', $orgName, time() + 24 * 60 * 60);
 					<p>
 						Puedes enviarnos un mensaje respecto a cualquier tema. <br/> Nos pondremos en contacto contigo tan pronto sea posible.
 					</p>
-					<form role="form" id="contact-form" method="post" action="secure_email_code.php">
+					<form role="form" id="contact-form" method="post" action="/php/secure_email_code.php">
 						<div class="form-group">
 				    		<label for="name">Nombre</label>
 				    		<input type="text" name="name" class="form-control" id="name" />
 				  		<input type="hidden" name= "to" id="to" value="feitesm.website@gmail.com"/>
-				  		<input type="hidden" name= "pathRedireccion" id="to" value="contactus.html"/>
+				  		<input type="hidden" name= "pathRedireccion" id="to" value="/php/contactus.php"/>
 				  		</div>
 
 				  		<div class="form-group">
@@ -114,9 +114,9 @@ setcookie('orgName', $orgName, time() + 24 * 60 * 60);
 						</p>
 					</div>
 					<div class="social">
-						<a href="https://www.facebook.com/feitesm.mty" target="_blank" class="fb"><img src="images/social/fb.png" alt="facebook" /></a>
-						<a href="https://twitter.com/feitesm_mty" target="_blank" class="tw"><img src="images/social/tw.png" alt="twitter" /></a>
-						<a href="https://instagram.com/feitesm_mty" target="_blank" class="tw"><img src="images/social/insta.png" alt="instagram" /></a>
+						<a href="https://www.facebook.com/feitesm.mty" target="_blank" class="fb"><img src="/images/social/fb.png" alt="facebook" /></a>
+						<a href="https://twitter.com/feitesm_mty" target="_blank" class="tw"><img src="/images/social/tw.png" alt="twitter" /></a>
+						<a href="https://instagram.com/feitesm_mty" target="_blank" class="tw"><img src="/images/social/insta.png" alt="instagram" /></a>
 					</div>
 				</div>
 			</div>
@@ -129,5 +129,5 @@ setcookie('orgName', $orgName, time() + 24 * 60 * 60);
     </div><!-- end .st-pusher -->
   </div><!-- end .st-container -->
 </body>
-    <script src="js/nav-bar.js"></script>
+    <script src="/js/nav-bar.js"></script>
 </html>

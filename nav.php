@@ -21,12 +21,12 @@
 	<a href="/CSA/CSA.php" class="item">
 		Consejo de Sociedades de Alumnos (CSA)
 	</a>
-	<a href="/contactus.php" class="item">
+	<a href="/php/contactus.php" class="item">
 		Contacto
 	</a>
-	<?php if($auth->isLoggedIn()): ?>
+	<!--<?php //if($auth->isLoggedIn()): ?>
 	<a href="logout.php">Cerrar Sesion</a>
-	<?php endif; ?>
+	<?php //endif; ?>-->
 
 	<div class="social">
 		<a href="http://www.twitter.com/feitesm_mty">

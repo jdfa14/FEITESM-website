@@ -1,6 +1,6 @@
 <div class="container head">
 	<div class="navbar-header">
-		<a href="/feitesm-website/index.php" class="navbar-brand">FEITESM</a>
+		<a href="/index.php" class="navbar-brand">FEITESM</a>
 	</div>
 	<div class="sidebar-toggle">
 		<div class="line"></div>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 11-05-2015 a las 06:30:58
+-- Tiempo de generación: 11-05-2015 a las 18:58:14
 -- Versión del servidor: 5.5.16
 -- Versión de PHP: 5.3.8
 
@@ -168,7 +168,7 @@ CREATE TABLE IF NOT EXISTS `organizacion` (
 --
 
 INSERT INTO `organizacion` (`id_org`, `siglas`, `nombre`, `descripcion`, `email_contacto`, `logo_url`, `facebook`, `twitter`, `instagram`, `id_org_padre`) VALUES
-(1, 'FEITESM', 'FEITESM', '', 'ejemplo@mail.com', 'images\\organizaciones\\default.jpg', 'https://www.facebook.com/feitesm.mty', 'https://twitter.com/feitesm_mty', NULL, NULL),
+(1, 'FEITESM', 'Federación de Estudiantes del Tecnológico de Monterrey, Campus Monterrey.', '', 'ejemplo@mail.com', 'images\\organizaciones\\default.jpg', 'https://www.facebook.com/feitesm.mty', 'https://twitter.com/feitesm_mty', NULL, NULL),
 (2, 'cam', 'Consejo de Acciones por México', '', 'ejemplo@mail.com', 'https://drive.google.com/uc?export=download&id=0B_V63ukt6Nk2ZnFVT3FyUktzX0E', 'https://www.facebook.com/cam.mty', 'https://twitter.com/cam_mty', 'https://instagram.com/cam.mty', 1),
 (3, 'care', 'Consejo de Asociaciones Regionales y Extranjeras', '', 'ejemplo@mail.com', 'https://drive.google.com/uc?export=download&id=0B_V63ukt6Nk2RExIU2Z3a1BMTGM', 'https://www.facebook.com/caremty', 'https://twitter.com/CARE_Mty', 'https://instagram.com/care_mty', 1),
 (4, 'cce', 'Consejo de Comunidades Estudiantiles', '', 'ejemplo@mail.com', 'https://drive.google.com/uc?export=download&id=0B_V63ukt6Nk2RGdEVThHSzJtU3M', 'https://www.facebook.com/consejoce', '', 'https://instagram.com/cce_mty', 1),

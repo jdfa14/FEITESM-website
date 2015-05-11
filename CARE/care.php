@@ -96,7 +96,7 @@
 										<div class="col-md-12 message">
 											<div id="contact-us">
 												<div id="info-contact">
-													<form role="form" id="contact-form" method="post" action="../secure_email_code.php">
+													<form role="form" id="contact-form" method="post" action="../php/secure_email_code.php">
 														<div hidden>
 															<p class="contacto">1</p>
 															<p class="redes">0</p>
@@ -105,7 +105,7 @@
 															<label for="name">Nombre</label>
 															<input type="text" name="name" class="form-control" id="name" />
 															<input type="hidden" name= "to" id="to" value="<?= $thisOrg['email_contacto']?>"/>
-															<input type="hidden" name= "pathRedireccion" id="to" value="<?=__FILE__?>"/>
+															<input type="hidden" name= "pathRedireccion" id="to" value="/CARE/care.php"/>
 														</div>
 														<div class="form-group">
 															<label for="email">Correo electr&oacute;nico</label>
@@ -137,15 +137,19 @@
 											<h4>Redes sociales</h4>
 											<p><span>Facebook:</span>
 											<a href="<?= $thisOrg['facebook'] ?>" target="_blank">
-												ConsejoSA
+												caremty
 											</a></p>
 											<p><span>Twitter:</span>
 											<a href="<?= $thisOrg['twitter'] ?>" target="_blank">
-												csa_mty
+												care_mty
+											</a></p>
+											<p><span>Instagram:</span>
+											<a href="<?= $thisOrg['instagram'] ?>" target="_blank">
+												care_mty
 											</a></p>
 										</div>
 										<div class="col-md-6 image">
-											<img src="<?= $thisOrg['logo_url'] ?>" class="img-responsive" style="position: relative;top: 15px;" alt="picture3" />
+											<img src="<?= $row["img_url"]?>" class="img-responsive" style="position: relative;top: 15px;" alt="picture3" />
 										</div>
 									</div>
 									<?php else: ?>

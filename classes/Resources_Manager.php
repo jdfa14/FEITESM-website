@@ -11,8 +11,12 @@ class Resources_Manager
 		$what = "id_org";
 		$from = "organizacion";
 		$where = "siglas = '{$orgSign}'";
-		$return = $this->db->select($what,$from,$where)->fetch_assoc();
-		return $return["id_org"];
+		$return = $this->db->select($what,$from,$where);
+		if ($return) { 
+			$return = $return->fetch_assoc();
+			return $return["id_org"];
+		}
+		return null;
 	}
 
 	public function getTabsInfo($orgSign)
